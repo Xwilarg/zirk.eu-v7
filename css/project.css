@@ -1,0 +1,35 @@
+.project img {
+    max-width: 30vw;
+    max-height: calc(30vw/1.4);
+}
+
+table {
+    margin-top: 2em;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #343444;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #cfcfe6;
+}
+
+.project-image-preview {
+    text-align: center;
+}
+
+#project-normal-preview {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#project-normal-preview-image {
+    max-width: 60vw;
+}

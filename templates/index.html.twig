@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <p>
+        Hey I'm Zirk, if you ever came here before you may be like "Wow what happened?" so boom, because I love them, surprise FAQ
+        <div class="question">
+            <h3>(+) Wow what happened?</h3>
+            <span hidden>
+                Remaking everything from scratch with a cleaner code and more PHP<sup>TM</sup> to handle all the data
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) What happened to the CSS?</h3>
+            <span hidden>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Operation_Upshot-Knothole_-_Badger_001.jpg/1024px-Operation_Upshot-Knothole_-_Badger_001.jpg" alt="Explosion"/>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) Why is this in production?</h3>
+            <span hidden>
+                <img src="img/tmp/edge.png" alt="Living on the Edge"/>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) What is this website made with?</h3>
+            <span hidden>
+                Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
+                I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, obviously this one doesn't count as a "version" yet since it's not done, you can say it's V7-alpha<br/>
+                The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) How can I contact you?</h3>
+            <span hidden>
+                <ul>
+                    <li>On Discord: Zirk#0001</li>
+                    <li>By mail: contact@zirk.eu</li>
+                </ul>
+            </span>
+        </div>
+    </p>
+    <div class="flex">
+        <a id="see-more" class="tab-button" href="#project" data-target="project">
+            Projects
+        </a>
+        <a id="see-more" class="tab-button" href="#gamejam" data-target="gamejam">
+            Game Jams
+        </a>
+    </div>
+    <div class="globalTab" id="gamejam" hidden>
+        <h2>Game Jams</h2>
+        <div class="flex">
+            {% for jam in jams %}
+                {% include 'gamejam.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="globalTab" id="project" hidden>
+        <h2>Projects</h2>
+        <div class="flex">
+            {% for project in projects | filter(x => x.highlight) %}
+                {% include 'project.html.twig' %}
+            {% endfor %}
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Languages</th>
+                    <th>Preview</th>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>{{ project.name }}</td>
+                        <td>{{ project.type }}</td>
+                        <td>{{ project.description }}</td>
+                        <td>{{ project.start }} - {{ project.end }}</td>
+                        <td>{{ project.languages | join(" ") }}</td>
+                        <td class="project-image-preview" data-name="{{ project.name }}" data-img="{{ project.image }}">{% if project.image is not null %}<i class="fa-solid fa-computer-mouse"></i>{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div id="project-normal-preview" hidden>
+                <h2 id="project-normal-preview-title"></h2>
+                <img id="project-normal-preview-image" src=""/>
+            </div>
+        </div>
+    </div>
+{% endblock %}

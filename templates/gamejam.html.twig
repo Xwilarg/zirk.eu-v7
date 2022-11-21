@@ -1,0 +1,30 @@
+<div class="gamejam">
+
+    <p class="jam-title">{{jam.event}} - {{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %}<br/>{{ jam.theme ?? "&nbsp;" }}</p>
+    <span class="jam-info-text">
+        <p class="jam-info">
+            {% if jam.entries != 0 %}
+                Ranked {{ jam.overall }} out of {{ jam.entries }}<br/>({{ (jam.overall / jam.entries * 100) | number_format(2) }}% tier)
+            {% endif %}
+        </p>
+    </span>
+    <img src="{{ jam.image }}"></img>
+    <br/>
+    <span class="button-container">
+        {% for webgl in jam.webgl %}
+            <a class="button green" target="_blank" href="{{ webgl }}"><i class="fa-solid fa-play"></i> Play</a>
+        {% endfor %}
+        {% if jam.website is not null %}
+            <a class="button" target="_blank" href="{{ jam.website }}"><i class="fa-solid fa-globe"></i></a>
+        {% endif %}
+        {% if jam.source is not null %}
+            <a class="button" target="_blank" href="{{ jam.source }}"><i class="fa-brands fa-github"></i></a>
+        {% endif %}
+        {% for video in jam.gameplay %}
+            <a class="button" target="_blank" href="{{ video }}"><i class="fa-brands fa-youtube"></i></a>
+        {% endfor %}
+        {% for video in jam.stream %}
+            <a class="button" target="_blank" href="{{ video }}"><i class="fa-solid fa-video"></i></a>
+        {% endfor %}
+    </span>
+</div>
