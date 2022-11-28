@@ -49,6 +49,13 @@
     </div>
     <div class="globalTab" id="gamejam" hidden>
         <h2>Game Jams</h2>
+        <h3>Best Scores (≥24h)</h3>
+        <div class="flex">
+            {% for jam in jams | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
+                {% include 'gamejam.html.twig' %}
+            {% endfor %}
+        </div>
+        <hr/>
         <div class="flex">
             {% for jam in jams %}
                 {% include 'gamejam.html.twig' %}

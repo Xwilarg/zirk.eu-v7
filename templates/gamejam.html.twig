@@ -1,6 +1,8 @@
 <div class="gamejam">
 
-    <p class="jam-title">{{jam.event}} - {{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %}<br/>{{ jam.theme ?? "&nbsp;" }}</p>
+    <p class="jam-title">
+        {{jam.event}} {% if jam.theme %} - {{ jam.theme }}{% endif %}<br/>{{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}
+    </p>
     <span class="jam-info-text">
         <p class="jam-info">
             {% if jam.entries != 0 %}
@@ -11,9 +13,9 @@
     <img src="{{ jam.image }}"></img>
     <br/>
     <span class="button-container">
-        {% for webgl in jam.webgl %}
-            <a class="button green" target="_blank" href="{{ webgl }}"><i class="fa-solid fa-play"></i> Play</a>
-        {% endfor %}
+        {% if jam.webgl is not null %}
+            <a class="button green" target="_blank" href="{{ jam.webgl }}"><i class="fa-solid fa-play"></i> Play</a>
+        {% endif %}
         {% if jam.website is not null %}
             <a class="button" target="_blank" href="{{ jam.website }}"><i class="fa-solid fa-globe"></i></a>
         {% endif %}

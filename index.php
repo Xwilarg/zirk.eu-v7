@@ -24,15 +24,18 @@ foreach ($data as $jam) {
         "image" => "data/img/gamejam/" . $jam["name"] . ".jpg",
         "gif" => "data/img/gamejam/" . $jam["name"] . ".gif",
         "event" => $jam["event"],
+        "date" => $jam["date"],
         "duration" => $jam["duration"],
         "theme" => count($jam["theme"]) > 0 ? $jam["theme"][0] : null,
         "overall" => $overall,
         "entries" => $entries,
         "website" => $jam["nsfw"] ? null : $jam["website"],
         "source" => $jam["nsfw"] ? null : $jam["github"],
-        "webgl" => $jam["nsfw"] ? array() : $jam["webgl"],
+        "webgl" => $jam["nsfw"] ? array() : $jam["webgl"][0],
         "gameplay" => $jam["gameplay"],
-        "stream" => $jam["stream"]
+        "stream" => $jam["stream"],
+        "score" => $jam["rating"] === null || $jam["rating"]["scores"] === null || $jam["rating"]["scores"]["Overall"]["rank"] === null ? 1
+            : $jam["rating"]["scores"]["Overall"]["rank"] / $jam["rating"]["entries"]
     ]);
 }
 
@@ -49,9 +52,7 @@ foreach ($data as $project) {
         "start" => $project["dates"]["start"],
         "end" => $project["dates"]["end"],
         "highlight" => $project["highlight"],
-        "links" => $project["links"],
-        "score" => $project["rating"] === null || $project["rating"]["scores"] === null || $project["rating"]["scores"]["Overall"]["rank"] === null ? 0
-            : $project["rating"]["scores"]["Overall"]["rank"] / $project["rating"]["entries"]
+        "links" => $project["links"]
     ]);
 }
 
