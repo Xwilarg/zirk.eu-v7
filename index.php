@@ -49,7 +49,9 @@ foreach ($data as $project) {
         "start" => $project["dates"]["start"],
         "end" => $project["dates"]["end"],
         "highlight" => $project["highlight"],
-        "links" => $project["links"]
+        "links" => $project["links"],
+        "score" => $project["rating"] === null || $project["rating"]["scores"] === null || $project["rating"]["scores"]["Overall"]["rank"] === null ? 0
+            : $project["rating"]["scores"]["Overall"]["rank"] / $project["rating"]["entries"]
     ]);
 }
 

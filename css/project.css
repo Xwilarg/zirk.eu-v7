@@ -3,6 +3,12 @@
     max-height: calc(30vw/1.4);
 }
 
+.project p {
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 table {
     margin-top: 2em;
     border-collapse: collapse;

@@ -2,6 +2,9 @@
     <h2>{{ project.name ?? "&nbsp;" }}</h2>
     <img src="{{ project.image }}"></img>
     <br/>
+    <p>
+        {{ project.description }}
+    </p>
     <span class="button-container">
         {% for link in project.links | filter(x => x.name == "Source Code") %}
             <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i></a>
