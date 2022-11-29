@@ -52,7 +52,7 @@ foreach ($data as $project) {
         "start" => $project["dates"]["start"],
         "end" => $project["dates"]["end"],
         "highlight" => $project["highlight"],
-        "links" => $project["links"]
+        "links" => $project["nsfw"] ? array() : $project["links"]
     ]);
 }
 

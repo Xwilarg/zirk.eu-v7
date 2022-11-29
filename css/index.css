@@ -8,6 +8,10 @@ html {
     justify-content: center;
 }
 
+.flex-break {
+    width: 100%;
+}
+
 .button {
     border: none;
     text-decoration: none;
@@ -35,9 +39,9 @@ html {
     color: green;
 }
 
-#see-more {
-    width: 24vw;
-    height: calc(24vw / 1.25);
+.see-more {
+    width: 20em;
+    height: 17.5em;
     border: 1px solid black;
     border-radius: 5px;
     display: flex;
@@ -45,11 +49,17 @@ html {
     align-items: center;
     text-decoration: none;
     color: black;
+    margin: 0.2em;
 }
 
-#see-more:hover {
+.see-more:hover {
     color: white;
     background-color: black;
+}
+
+.see-more.secondary {
+    width: 40.4em;
+    height: 7.5em;
 }
 
 .question > h3 {
