@@ -103,6 +103,50 @@
         </div>
     </div>
     <div class="globalTab" id="about" hidden>
-        aze
+        <h3>Social</h3>
+        <p>
+            {% for social in about.social %}
+            <a href="{{ social.link }}" target="_blank">{{ social.name }}</a><br/>
+            {% endfor %}
+        </p>
+        <h3>Music</h3>
+        <p>
+            {% for music in about.music %}
+            <a href="{{ music.link }}" target="_blank">{{ music.name }}</a><br/>
+            {% endfor %}
+        </p>
+        <h3>Games</h3>
+        <p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Store</th>
+                        <th>Links</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for game in about.games %}
+                    <tr>
+                        <td>{{ game.name }}</td>
+                        <td><a href="{{ game.store.link }}" target="_blank">{{ game.store.name }}</a></td>
+                        <td>
+                            {% for link in game.links %}
+                                {% if link.type == "link" or link.type == "image" %}
+                                <a href="{{ link.content }}" target="_blank">{{ link.name }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </p>
+        <h3>Light/Visual Novels - Mangas</h3>
+        <p>
+            {% for novel in about.novels %}
+            <a href="{{ novel.link }}" target="_blank">{{ novel.name }} ({{ novel.type | title }})</a><br/>
+            {% endfor %}
+        </p>
     </div>
 {% endblock %}

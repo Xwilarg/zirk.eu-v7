@@ -58,7 +58,8 @@ foreach ($data as $project) {
 
 # Display page
 echo $twig->render("index.html.twig", [
-    "css" => [ "index", "gamejam", "project" ],
+    "css" => [ "index", "gamejam", "project", "about" ],
     "jams" => $jamData ,
-    "projects" => $projectsData
+    "projects" => $projectsData,
+    "about" => json_decode(file_get_contents("data/json/about.json"), true)
 ]);
