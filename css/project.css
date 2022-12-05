@@ -1,6 +1,7 @@
 .project img {
     max-width: 30vw;
-    max-height: calc(30vw/1.4);
+    height: calc(30vw/1.4);
+    object-fit: contain;
 }
 
 .project p {
@@ -9,19 +10,13 @@
     margin-right: 10%;
 }
 
-table {
+.project {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+#project table {
     margin-top: 2em;
-    border-collapse: collapse;
-}
-
-td, th {
-    border: 1px solid #ccc;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #333;
 }
 
 .project-image-preview {
