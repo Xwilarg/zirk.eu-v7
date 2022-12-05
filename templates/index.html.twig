@@ -1,44 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <p>
-        Hey I'm Zirk, if you ever came here before you may be like "Wow what happened?" so boom, because I love them, surprise FAQ
-        <div class="question">
-            <h3>(+) Wow what happened?</h3>
-            <span hidden>
-                Remaking everything from scratch with a cleaner code and more PHP<sup>TM</sup> to handle all the data
-            </span>
-        </div>
-        <div class="question">
-            <h3>(+) What happened to the CSS?</h3>
-            <span hidden>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Operation_Upshot-Knothole_-_Badger_001.jpg/1024px-Operation_Upshot-Knothole_-_Badger_001.jpg" alt="Explosion"/>
-            </span>
-        </div>
-        <div class="question">
-            <h3>(+) Why is this in production?</h3>
-            <span hidden>
-                <img src="img/tmp/edge.png" alt="Living on the Edge"/>
-            </span>
-        </div>
-        <div class="question">
-            <h3>(+) What is this website made with?</h3>
-            <span hidden>
-                Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
-                I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, obviously this one doesn't count as a "version" yet since it's not done, you can say it's V7-alpha<br/>
-                The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
-            </span>
-        </div>
-        <div class="question">
-            <h3>(+) How can I contact you?</h3>
-            <span hidden>
-                <ul>
-                    <li>On Discord: Zirk#0001</li>
-                    <li>By mail: contact@zirk.eu</li>
-                </ul>
-            </span>
-        </div>
-    </p>
+    <div id="intro">
+        <h2>Zirk</h2>
+        <p>
+            Welcome on my amazing website, I'm a software developer currently working at <a href="https://bionomeex.com" target="_blank">BionomeeX</a><br/>
+            As a hobbies, I like to either work on <a href="#project">my own projects</a> (softwares, bots, websites...) or to participate at <a href="#gamejam">gamejams</a> (making a games in usually less than 72 hours)<br/>
+            Outside of programming I also have <a href="#about">various others hobbies</a> such as playing video games or reading books<br/>
+        </p>
+    </div>
     <div class="flex">
         <a class="see-more" href="#project" data-target="project">
             Projects
@@ -49,6 +19,10 @@
         <div class="flex-break"></div>
         <a class="see-more secondary" href="#about" data-target="about">
             About Me
+        </a>
+        <div class="flex-break"></div>
+        <a class="see-more secondary" href="#faq" data-target="faq">
+            FAQ
         </a>
     </div>
     <div class="globalTab" id="gamejam" hidden>
@@ -107,7 +81,7 @@
         <h3>Social</h3>
         <p>
             {% for social in about.social %}
-            <a href="{{ social.link }}" target="_blank">{{ social.name }}</a><br/>
+            <a href="{{ social.link }}" target="_blank" rel="me">{{ social.name }}</a><br/>
             {% endfor %}
         </p>
         <h3>Music</h3>
@@ -149,5 +123,30 @@
             <a href="{{ novel.link }}" target="_blank">{{ novel.name }} ({{ novel.type | title }})</a><br/>
             {% endfor %}
         </p>
+    </div>
+    <div class="globalTab" id="faq" hidden>
+        <div class="question">
+            <h3>(+) How can I contact you?</h3>
+            <span hidden>
+                <ul>
+                    <li>On Discord: Zirk#0001</li>
+                    <li>By mail: contact@zirk.eu</li>
+                </ul>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) What is this website made with?</h3>
+            <span hidden>
+                Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
+                I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, this one isn't done yet so you can say it's V7-beta<br/>
+                The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) Anything else?</h3>
+            <span hidden>
+                <img src="img/about/potato.png"/>
+            </span>
+        </div>
     </div>
 {% endblock %}
