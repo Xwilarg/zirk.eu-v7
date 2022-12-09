@@ -34,3 +34,12 @@
 #project-normal-preview-image {
     max-width: 60vw;
 }
+
+.project .button {
+    display: flex;
+    align-items: center;
+}
+
+.project .button span {
+    margin-left: 1em;
+}

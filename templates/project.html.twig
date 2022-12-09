@@ -7,10 +7,10 @@
     </p>
     <span class="button-container">
         {% for link in project.links | filter(x => x.name != "Source Code") %}
-            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i></a>
+            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>{{ link.name }}</span></a>
         {% endfor %}
         {% for link in project.links | filter(x => x.name == "Source Code") %}
-            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i></a>
+            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i><span>{{ link.name }}</span></a>
         {% endfor %}
     </span>
 </div>
