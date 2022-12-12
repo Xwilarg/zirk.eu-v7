@@ -1,8 +1,14 @@
 html {
     font-family: Verdana, sans-serif;
     text-align: center;
-    background-color: #222;
+    background-color: rgb(30, 30, 30);
     color: #ccc;
+}
+
+.container {
+    box-shadow: rgb(17, 19, 19) 5px 5px 4px, rgb(50, 55, 57) -5px -5px 4px;
+    background: linear-gradient(145deg, rgba(115,115,115,0.15) 15%, #343c44 80%);
+    border-radius: 25px;
 }
 
 .flex {
