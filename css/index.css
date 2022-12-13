@@ -9,6 +9,10 @@ html {
     box-shadow: rgb(17, 19, 19) 5px 5px 4px, rgb(50, 55, 57) -5px -5px 4px;
     background: linear-gradient(145deg, rgba(115,115,115,0.15) 15%, #343c44 80%);
     border-radius: 25px;
+    width: 80vw;
+    margin-left: 10vw;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .flex {
