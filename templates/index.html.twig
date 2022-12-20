@@ -83,7 +83,9 @@
         <h3>Social</h3>
         <p>
             {% for social in about.social %}
-            <a href="{{ social.link }}" target="_blank" rel="me">{{ social.name }}</a><br/>
+            <a class="logo" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
+                <img src="data/img/logo/{{ social.logo }}"/>
+            </a>
             {% endfor %}
         </p>
         <h3>Music</h3>

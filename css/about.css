@@ -8,3 +8,11 @@
 table {
     margin-top: 0;
 }
+
+a.logo {
+    text-decoration: none;
+}
+
+a.logo img {
+    width: 50px;
+}
