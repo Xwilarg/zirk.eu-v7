@@ -104,7 +104,7 @@
                         <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
                         <td>
                             {% for youtube in music.youtube %}
-                            <button class="youtube-show" data-id="{{ youtube.id }}">{{ youtube.name }}</button>
+                            <button class="youtube-show button small" data-id="{{ youtube.id }}">{{ youtube.name }}</button>
                             {% endfor %}
                         </td>
                     </tr>
