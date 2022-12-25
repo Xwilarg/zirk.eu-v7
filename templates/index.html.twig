@@ -89,10 +89,28 @@
             {% endfor %}
         </p>
         <h3>Music</h3>
+        <iframe id="about-yt-player" width="560" height="315" src="" frameborder="0" allow="" hidden></iframe>
         <p>
-            {% for music in about.music %}
-            <a href="{{ music.link }}" target="_blank">{{ music.name }}</a><br/>
-            {% endfor %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Play</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for music in about.music %}
+                    <tr>
+                        <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
+                        <td>
+                            {% for youtube in music.youtube %}
+                            <button class="youtube-show" data-id="{{ youtube.id }}">{{ youtube.name }}</button>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </p>
         <h3>Games</h3>
         <p>

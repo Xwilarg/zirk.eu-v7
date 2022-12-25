@@ -25,6 +25,14 @@ window.onload = function () {
         });
     }
 
+    for (elem of document.getElementsByClassName("youtube-show")) {
+        elem.addEventListener("click", e => {
+            const player = document.getElementById("about-yt-player");
+            player.hidden = false;
+            player.src = `https://www.youtube-nocookie.com/embed/${e.target.dataset.id}?controls=0`;
+        });
+    }
+
     for (let e of document.getElementsByClassName("question")) {
         let children = e.children;
         children[0].addEventListener("click", () => {
