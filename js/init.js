@@ -29,7 +29,7 @@ window.onload = function () {
         elem.addEventListener("click", e => {
             const player = document.getElementById("about-yt-player");
             player.hidden = false;
-            player.src = `https://www.youtube-nocookie.com/embed/${e.target.dataset.id}?controls=0`;
+            player.src = `https://www.youtube-nocookie.com/embed/${e.target.dataset.id}`;
         });
     }
 
