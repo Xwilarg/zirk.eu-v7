@@ -84,12 +84,12 @@
         <p>
             {% for social in about.social %}
             <a class="logo" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
-                <img src="data/img/logo/{{ social.logo }}"/>
+                <img src="data/img/about/logo/{{ social.logo }}"/>
             </a>
             {% endfor %}
         </p>
         <h3>Music</h3>
-        <iframe id="about-yt-player" width="560" height="315" src="" frameborder="0" allow="" hidden></iframe>
+        <iframe id="music-yt-player" width="560" height="315" src="" frameborder="0" allow="" hidden></iframe>
         <p>
             <table>
                 <thead>
@@ -104,7 +104,7 @@
                         <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
                         <td>
                             {% for youtube in music.youtube %}
-                            <button class="youtube-show button small" data-id="{{ youtube.id }}">{{ youtube.name }}</button>
+                            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button>
                             {% endfor %}
                         </td>
                     </tr>
@@ -113,20 +113,31 @@
             </table>
         </p>
         <h3>Games</h3>
+        <iframe id="game-yt-player" width="560" height="315" src="" frameborder="0" allow="" hidden></iframe>
         <p>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Store</th>
+                        <th>Video</th>
+                        <th>Gameplay</th>
                         <th>Links</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for game in about.games %}
                     <tr>
-                        <td>{{ game.name }}</td>
-                        <td><a href="{{ game.store.link }}" target="_blank">{{ game.store.name }}</a></td>
+                        <td><a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a></td>
+                        <td>
+                            {% if game.video is not null %}
+                            <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-play"></i></button>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if game.gameplay is not null %}
+                            <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-play"></i></button>
+                            {% endif %}
+                        </td>
                         <td>
                             {% for link in game.links %}
                                 {% if link.type == "link" or link.type == "image" %}
@@ -139,10 +150,10 @@
                 </tbody>
             </table>
         </p>
-        <h3>Light/Visual Novels - Mangas</h3>
+        <h3>Readable Stuffs</h3>
         <p>
             {% for novel in about.novels %}
-            <a href="{{ novel.link }}" target="_blank">{{ novel.name }} ({{ novel.type | title }})</a><br/>
+            <a class="readable" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
         </p>
     </div>

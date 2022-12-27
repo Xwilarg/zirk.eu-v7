@@ -26,10 +26,11 @@ window.onload = function () {
     }
 
     for (elem of document.getElementsByClassName("youtube-show")) {
-        elem.addEventListener("click", e => {
-            const player = document.getElementById("about-yt-player");
+        const target = elem;
+        elem.addEventListener("click", _ => {
+            const player = document.getElementById(`${target.dataset.target}-yt-player`);
             player.hidden = false;
-            player.src = `https://www.youtube-nocookie.com/embed/${e.target.dataset.id}`;
+            player.src = `https://www.youtube-nocookie.com/embed/${target.dataset.id}`;
         });
     }
 

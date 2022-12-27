@@ -16,3 +16,7 @@ a.logo {
 a.logo img {
     width: 50px;
 }
+
+.readable img {
+    width: 200px;
+}

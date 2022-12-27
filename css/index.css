@@ -25,13 +25,13 @@ html {
     width: 100%;
 }
 
-a:not(.see-more):not(.button):not(.logo) {
+a:not(.see-more):not(.button):not(.logo):not(.readable) {
     text-decoration: none;
     border-bottom: dotted 1px;
     color: rgb(191, 200, 255);
 }
 
-a:not(.see-more):not(.button):not(.logo):hover {
+a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
     color: #EF6480;
     border-bottom-color: transparent;
     cursor: pointer;
