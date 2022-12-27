@@ -31,7 +31,7 @@ foreach ($data as $jam) {
         "entries" => $entries,
         "website" => $jam["nsfw"] ? null : $jam["website"],
         "source" => $jam["nsfw"] ? null : $jam["github"],
-        "webgl" => $jam["nsfw"] ? array() : $jam["webgl"][0],
+        "webgl" => $jam["nsfw"] ? null : $jam["webgl"][0],
         "gameplay" => $jam["gameplay"],
         "stream" => $jam["stream"],
         "score" => $jam["rating"] === null || $jam["rating"]["scores"] === null || $jam["rating"]["scores"]["Overall"]["rank"] === null ? 1
