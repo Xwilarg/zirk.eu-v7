@@ -5,7 +5,7 @@ window.onload = function () {
 
     displayTab('globalTab', urlParam.toLowerCase().substring(1));
 
-    for (elem of document.getElementsByClassName("see-more")) {
+    for (elem of document.getElementsByClassName("main-link")) {
         const target = elem;
         elem.addEventListener("click", () => {
             displayTab("globalTab", target.dataset.target);
