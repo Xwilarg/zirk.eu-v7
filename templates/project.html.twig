@@ -5,7 +5,7 @@
     <p>
         {{ project.description }}
     </p>
-    <span class="button-container">
+    <span>
         {% for link in project.links | filter(x => x.name != "Source Code") %}
             <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>{{ link.name }}</span></a>
         {% endfor %}
