@@ -1,6 +1,6 @@
 .gamejam img {
-    width: 24vw;
-    height: calc(24vw/1.25);
+    width: 500px;
+    height: calc(500px / 1.25);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
