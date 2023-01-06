@@ -57,12 +57,12 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Languages</th>
-                    <th>Preview</th>
+                    <th>Prev.</th>
                 </thead>
                 <tbody>
                     {% for project in projects %}
                     <tr>
-                        <td>{{ project.name }}</td>
+                        <td  class="project-name">{{ project.name }}</td>
                         <td>{{ project.type }}</td>
                         <td>{{ project.description }}</td>
                         <td>{{ project.start }} - {{ project.end }}</td>
@@ -173,12 +173,6 @@
                 Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
                 I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, this one isn't done yet so you can say it's V7-beta<br/>
                 The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
-            </span>
-        </div>
-        <div class="question">
-            <h3>(+) The website doesn't work well on mobile</h3>
-            <span hidden>
-                That's not a question
             </span>
         </div>
         <div class="question">

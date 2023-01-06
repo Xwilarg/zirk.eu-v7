@@ -4,10 +4,27 @@
     object-fit: contain;
 }
 
+@media (max-width: 1000px) {
+    #project tr td:nth-child(4), #project th:nth-child(4),
+    #project tr td:nth-child(5), #project th:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    #project tr td:nth-child(2), #project th:nth-child(2) {
+        display: none;
+    }
+}
+
 @media (max-width: 500px) {
     .project img {
         width: 90vw;
         height: calc(90vw / 1.4);
+    }
+
+    #project .project-name {
+        word-break: break-all;
     }
 }
 

@@ -47,6 +47,9 @@ window.onload = function () {
             document.getElementById("project-normal-preview-image").src = p.dataset.img;
             document.getElementById("project-normal-preview").hidden = false;
         });
+        p.addEventListener("mousedown", _ => {
+            document.getElementById("project-normal-preview").hidden = true;
+        });
         p.addEventListener("mouseleave", _ => {
             document.getElementById("project-normal-preview").hidden = true;
         });
