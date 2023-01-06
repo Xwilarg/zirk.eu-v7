@@ -90,7 +90,7 @@
         </p>
         <h3>Music</h3>
         <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
-        <p>
+        <div id="about-music">
             <table>
                 <thead>
                     <tr>
@@ -111,16 +111,15 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </p>
+        </div>
         <h3>Games</h3>
         <iframe id="game-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
-        <p>
+        <div>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Trailer<br/><small>(Showcase)</small></th>
-                        <th>Trailer<br/><small>(Gameplay)</small></th>
+                        <th>Trailer</th>
                         <th>Links</th>
                     </tr>
                 </thead>
@@ -130,12 +129,10 @@
                         <td><a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a></td>
                         <td>
                             {% if game.video is not null %}
-                            <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-play"></i></button>
+                            <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-video"></i></button>
                             {% endif %}
-                        </td>
-                        <td>
                             {% if game.gameplay is not null %}
-                            <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-play"></i></button>
+                            <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-gamepad"></i></button>
                             {% endif %}
                         </td>
                         <td>
@@ -149,13 +146,13 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </p>
+        </div>
         <h3>Readable Stuffs</h3>
-        <p>
+        <div>
             {% for novel in about.novels %}
             <a class="readable" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
-        </p>
+        </div>
     </div>
     <div class="globalTab" id="faq" hidden>
         <div class="question">

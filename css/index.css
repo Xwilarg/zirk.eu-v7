@@ -46,6 +46,7 @@ a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
     color: #222;
     background-color: #ccc;
     padding: 0 .25em;
+    cursor: pointer;
 }
 
 .button.small {
