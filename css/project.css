@@ -1,5 +1,11 @@
-.project img {
+.project {
     width: 500px;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.project img {
+    width: 100%;
     height: calc(500px / 1.4);
     object-fit: contain;
 }
@@ -29,14 +35,7 @@
 }
 
 .project p {
-    max-width: 30vw;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.project {
-    margin-left: .5em;
-    margin-right: .5em;
+    width: 100%;
 }
 
 #project table {
