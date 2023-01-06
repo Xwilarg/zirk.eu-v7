@@ -28,10 +28,10 @@
         width: 90vw;
         height: calc(90vw / 1.4);
     }
+}
 
-    #project .project-name {
-        word-break: break-all;
-    }
+#project .project-name {
+    word-break: break-all;
 }
 
 .project p {

@@ -9,6 +9,11 @@ table {
     margin-top: 0;
 }
 
+#about table button {
+    width: 100%;
+    word-break: break-all;
+}
+
 a.logo {
     text-decoration: none;
 }
@@ -19,4 +24,9 @@ a.logo img {
 
 .readable img {
     height: 300px;
+}
+
+.yt-player {
+    width: 560px;
+    height: 315px;
 }
