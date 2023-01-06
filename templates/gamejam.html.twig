@@ -1,32 +1,34 @@
 <div class="gamejam">
-
-    <p class="jam-title">
-        {{jam.event}} {% if jam.theme %} - {{ jam.theme }}{% endif %}<br/>{{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}
-    </p>
-    <span class="jam-info-text">
-        <p class="jam-info">
-            {% if jam.entries != 0 %}
-                Ranked {{ jam.overall }} out of {{ jam.entries }}<br/>({{ (jam.overall / jam.entries * 100) | number_format(2) }}% tier)
-            {% endif %}
+    <div class="jam-title">
+        <p>
+            {{jam.event}} {% if jam.theme %} - {{ jam.theme }}{% endif %}<br/>{{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}
         </p>
-    </span>
+    </div>
     <img src="{{ jam.image }}"></img>
     <br/>
-    <span>
-        {% if jam.webgl is not null %}
-            <a class="button green" target="_blank" href="{{ jam.webgl }}"><i class="fa-solid fa-play"></i> Play</a>
+    <span class="jam-info">
+        <span class="jam-buttons">
+            {% if jam.webgl is not null %}
+                <a class="button green" target="_blank" href="{{ jam.webgl }}"><i class="fa-solid fa-play"></i> Play</a>
+            {% endif %}
+            {% if jam.website is not null %}
+                <a class="button" target="_blank" href="{{ jam.website }}"><i class="fa-solid fa-globe"></i></a>
+            {% endif %}
+            {% if jam.source is not null %}
+                <a class="button" target="_blank" href="{{ jam.source }}"><i class="fa-brands fa-github"></i></a>
+            {% endif %}
+            {% for video in jam.gameplay %}
+                <a class="button" target="_blank" href="{{ video }}"><i class="fa-brands fa-youtube"></i></a>
+            {% endfor %}
+            {% for video in jam.stream %}
+                <a class="button" target="_blank" href="{{ video }}"><i class="fa-solid fa-video"></i></a>
+            {% endfor %}
+        </span>
+
+        {% if jam.entries != 0 %}
+        <span>
+            Ranked {{ jam.overall }} out of {{ jam.entries }}<br/>({{ (jam.overall / jam.entries * 100) | number_format(2) }}% tier)
+        </span>
         {% endif %}
-        {% if jam.website is not null %}
-            <a class="button" target="_blank" href="{{ jam.website }}"><i class="fa-solid fa-globe"></i></a>
-        {% endif %}
-        {% if jam.source is not null %}
-            <a class="button" target="_blank" href="{{ jam.source }}"><i class="fa-brands fa-github"></i></a>
-        {% endif %}
-        {% for video in jam.gameplay %}
-            <a class="button" target="_blank" href="{{ video }}"><i class="fa-brands fa-youtube"></i></a>
-        {% endfor %}
-        {% for video in jam.stream %}
-            <a class="button" target="_blank" href="{{ video }}"><i class="fa-solid fa-video"></i></a>
-        {% endfor %}
     </span>
 </div>
