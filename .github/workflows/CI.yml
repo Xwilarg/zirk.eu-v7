@@ -36,4 +36,4 @@ jobs:
         KEY: ${{ secrets.DEPLOY_SSHKEY }}
       with:
         source: "css/,data/,img/,js/,templates/,index.php"
-        target: ${{ env.DEPLOY_TARGET }}
+        target: ${{ secrets.DEPLOY_TARGET }}
