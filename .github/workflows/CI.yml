@@ -35,5 +35,5 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.DEPLOY_SSHKEY }}
       with:
-          source: "./"
-          target: ${{ env.DEPLOY_TARGET }}
+        source: "css/,data/,img/,js/,templates/,index.php"
+        target: ${{ env.DEPLOY_TARGET }}
