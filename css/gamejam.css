@@ -1,3 +1,9 @@
+.gamejam {
+    width: 500px;
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
 .gamejam img {
     width: 500px;
     height: calc(500px / 1.25);
@@ -12,11 +18,6 @@
         width: 90vw;
         height: calc(90vw/1.25);
     }
-}
-
-.gamejam {
-    margin-left: .25em;
-    margin-right: .25em;
 }
 
 .jam-title {
