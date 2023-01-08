@@ -48,6 +48,7 @@ a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
     background-color: #ccc;
     padding: 0 .25em;
     cursor: pointer;
+    height: 30px;
 }
 
 .button.small {
