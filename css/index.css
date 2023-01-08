@@ -3,6 +3,7 @@ html {
     text-align: center;
     background-color: rgb(30, 30, 30);
     color: #ccc;
+    line-height: 1.5em;
 }
 
 .container {
