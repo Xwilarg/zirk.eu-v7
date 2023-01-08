@@ -29,6 +29,11 @@
     </div>
     <div class="globalTab" id="gamejam" hidden>
         <h2>Game Jams</h2>
+        <p class="explanation">
+            Gamejams are event when you need to make a game under a certain time (usually 48 or 72 hours for the most common events) given a certain theme<br/>
+            Jams here are all the ones I did (where we managed to submit something before the deadline)<br/>
+            You probably want to open this page on desktop since these games usually aren't designed for mobile
+        </p>
         <h3>Best Scores (≥24h)</h3>
         <div class="flex">
             {% for jam in jams | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
@@ -44,6 +49,10 @@
     </div>
     <div class="globalTab" id="project" hidden>
         <h2>Projects</h2>
+        <p class="explanation">
+            There are the list of the projects I'm currently working on<br/>
+            If you scroll down a bit more you can get a more or less complete list of all the projects I worked on
+        </p>
         <div class="flex">
             {% for project in projects | filter(x => x.highlight) %}
                 {% include 'project.html.twig' %}
@@ -170,6 +179,16 @@
                 Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
                 I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, this one isn't done yet so you can say it's V7-beta<br/>
                 The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
+            </span>
+        </div>
+        <div class="question">
+            <h3>(+) What cookies does this website use?</h3>
+            <span hidden>
+                This website itself doesn't use any cookies, clicking on a button in the about section will show a youtube-nocookie.com iframe which use a single "CONSENT" cookie used to store your Google preference regarding cookies<br/>
+                Other than that, this YouTube use your local and session storage for some things I have no idea nor control about, more information (probably) in <a href="https://policies.google.com/privacy?hl=en" target="_blank">Google privacy policy</a><br/>
+                <br/>
+                If you feel like this website doesn't use enough cookie, you can click on the button below that will save some random information for one hour:
+                <button id="new-cookie">New Cookie</button>
             </span>
         </div>
         <div class="question">
