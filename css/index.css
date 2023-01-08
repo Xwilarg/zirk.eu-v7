@@ -48,7 +48,9 @@ a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
     background-color: #ccc;
     padding: 0 .25em;
     cursor: pointer;
-    height: 30px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .button.small {
