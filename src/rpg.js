@@ -13,7 +13,6 @@ function rpg_init() {
 
 function rpg_write_narration(text) {
     rpgDiv.innerHTML += `${text}<br/><br/>`;
-    console.log(`${text}<br/><br/>`);
 }
 
 function decrease_hp() {
