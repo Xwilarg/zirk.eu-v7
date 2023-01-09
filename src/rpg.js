@@ -103,7 +103,7 @@ function rpg_on_input() {
     {
         rpg_write_narration("There is no hope");
     }
-    else if (!input in actions)
+    else if (!(input in actions))
     {
         rpg_write_narration("Unknown action, enter \"Help\" for the list of actions");
     }
@@ -114,7 +114,7 @@ function rpg_on_input() {
     else
     {
         let choices = locations[current];
-        if (!input in choices || !choices[input](args)) {
+        if (!(input in choices) || !choices[input](args)) {
             switch (input)
             {
                 case "ITEMS":
