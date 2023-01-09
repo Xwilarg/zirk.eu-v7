@@ -28,16 +28,20 @@ let locations = {
         "ITEMS": (_) => {
             rpg_write_narration("You feel your pockets but they are empty");
             decrease_hp();
+            return true;
         },
         "TOUCH": (args) => {
+            return true;
         },
         "WAIT": (_) => {
             rpg_write_narration("You gaze into nothingness and count the seconds");
             decrease_hp();
+            return true;
         },
         "WALK": (_) => {
             rpg_write_narration("You take a random direction and walk for a bit, you don't feel like anything changed around you");
             decrease_hp();
+            return true;
         }
     }
 };
@@ -84,24 +88,24 @@ function rpg_on_input() {
         return; // Empty input, we just ignore it
     }
 
+    rpgDiv.innerHTML += `<b>> ${input}</b><br/>`;
     if (mentalHp === 0)
     {
         rpg_write_narration("There is no hope");
-        return;
-    } else if (!input in actions) {
+    }
+    else if (!input in actions)
+    {
         rpg_write_narration("Unknown action, enter \"Help\" for the list of actions");
+    }
+    else if (actions[input].argCount !== args.length)
+    {
+        rpg_write_narration(`${to_sentence_case(input)} takes ${actions[input].argCount} argument${(actions[input].argCount > 1 ? "s" : "")}`);
         return;
-    } else if (actions[input].argCount !== args.length) {
-        rpg_write_narration(`${to_sentence_case(input)} takes only ${actions[input].argCount} argument${(actions[input].argCount > 1 ? "s" : "")}`);
-        return;
-    } else {
-        rpgDiv.innerHTML += `<b>> ${input}</b><br/>`;
-
+    }
+    else
+    {
         let choices = locations[current];
-        if (input in choices) {
-            choices[input](args);
-        }
-        else {
+        if (!input in choices || !choices[input](args)) {
             switch (input)
             {
                 case "ITEMS":
