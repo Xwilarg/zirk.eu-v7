@@ -3,7 +3,10 @@ let hashTarget = null;
 window.onload = function () {
     const urlParam = window.location.hash;
 
-    displayTab('globalTab', urlParam.toLowerCase().substring(1));
+    if (urlParam !== "")
+    {
+        displayTab('globalTab', urlParam.toLowerCase().substring(1));
+    }
 
     // Link each link to where it should head
     for (elem of document.getElementsByClassName("main-link")) {
@@ -97,6 +100,6 @@ window.onload = function () {
                 break;
         }
 
-        document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/`
+        document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`
     });
 };
