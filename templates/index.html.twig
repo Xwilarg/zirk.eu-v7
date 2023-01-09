@@ -11,23 +11,23 @@
     </div>
     <div class="container">
         <div class="flex">
-            <a class="see-more main-link" href="#project" data-target="project">
+            <a class="see-more main-link not-link" href="#project" data-category="global-tab" data-target="project">
                 Projects
             </a>
-            <a class="see-more main-link" href="#gamejam" data-target="gamejam">
+            <a class="see-more main-link not-link" href="#gamejam" data-category="global-tab" data-target="gamejam">
                 Game Jams
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link secondary" href="#about" data-target="about">
+            <a class="see-more main-link not-link secondary" href="#about" data-category="global-tab" data-target="about">
                 About Me
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link secondary" href="#faq" data-target="faq">
+            <a class="see-more main-link not-link secondary" href="#faq" data-category="global-tab" data-target="faq">
                 FAQ
             </a>
         </div>
     </div>
-    <div class="globalTab" id="gamejam" hidden>
+    <div class="global-tab" id="gamejam" hidden>
         <h2>Game Jams</h2>
         <p class="explanation">
             Gamejams are event when you need to make a game under a certain time (usually 48 or 72 hours for the most common events) given a certain theme<br/>
@@ -47,7 +47,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="globalTab" id="project" hidden>
+    <div class="global-tab" id="project" hidden>
         <h2>Projects</h2>
         <p class="explanation">
             There are the list of the projects I'm currently working on<br/>
@@ -87,12 +87,12 @@
             </div>
         </div>
     </div>
-    <div class="globalTab" id="about" hidden>
+    <div class="global-tab" id="about" hidden>
         <h2>About</h2>
         <h3>Social</h3>
         <p>
             {% for social in about.social %}
-            <a class="logo" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
+            <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
                 <img src="data/img/about/logo/{{ social.logo }}"/>
             </a>
             {% endfor %}
@@ -159,40 +159,55 @@
         <h3>Readable Stuffs</h3>
         <div>
             {% for novel in about.novels %}
-            <a class="readable" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img src="data/img/about/readable/{{novel.image}}"/></a>
+            <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
         </div>
     </div>
-    <div class="globalTab" id="faq" hidden>
-        <div class="question">
-            <h3>(+) How can I contact you?</h3>
-            <span hidden>
+    <div class="global-tab" id="faq" hidden>
+        <div>
+            <a class="main-link not-link" href="#faq-contact" data-category="faq-tab" data-target="faq-contact" data-dependency="faq"><h3>(+) How can I contact you?</h3></a>
+            <span class="faq-tab" id="faq-contact" hidden>
                 <ul>
                     <li>On Discord: Zirk#0001</li>
                     <li>By mail: contact@zirk.eu</li>
                 </ul>
             </span>
         </div>
-        <div class="question">
-            <h3>(+) What is this website made with?</h3>
-            <span hidden>
+        <div>
+            <a class="main-link not-link" href="#faq-dev" data-category="faq-tab" data-target="faq-dev" data-dependency="faq"><h3>(+) What is this website made with?</h3></a>
+            <span class="faq-tab" id="faq-dev" data-dependency="faq" hidden>
                 Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
                 I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, this one isn't done yet so you can say it's V7-beta<br/>
                 The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
             </span>
         </div>
-        <div class="question">
-            <h3>(+) What cookies does this website use?</h3>
-            <span hidden>
+        <div>
+            <a class="main-link not-link" href="#faq-cookie" data-category="faq-tab" data-target="faq-cookie" data-dependency="faq"><h3>(+) What cookies does this website use?</h3></a>
+            <span class="faq-tab" id="faq-cookie" data-dependency="faq" hidden>
                 This website itself doesn't use any cookies, clicking on a button in the about section will show a youtube-nocookie.com iframe which use a single "CONSENT" cookie used to store your Google preference regarding cookies<br/>
                 Other than that, YouTube use your local and session storage for some things I have no idea nor control about, more information (probably) in <a href="https://policies.google.com/privacy?hl=en" target="_blank">Google privacy policy</a><br/>
                 <br/>
                 If you feel like this website doesn't use enough cookie, you can click on the button below that will save some random information for one hour: <button id="new-cookie" class="button small">New Cookie</button>
             </span>
         </div>
-        <div class="question">
-            <h3>(+) Anything else?</h3>
-            <span hidden>
+        <div>
+            <a class="main-link not-link" href="#faq-rpg" data-category="faq-tab" data-target="faq-rpg" data-dependency="faq"><h3>(+) Any easter egg?</h3></a>
+            <span class="faq-tab" id="faq-rpg" data-dependency="faq" hidden>
+                Uh yeah sure, here you are I guess:<br/>
+                <small>I'm still coding that so don't blame me if it doesn't work</small>
+                <span id="rpg">
+                    <div id="rpg-output">
+                    </div>
+                    <span id="rpg-input">
+                        <input type="text" id="rpg-input-field"/>
+                        <button class="button small" id="rpg-enter">Enter</button>
+                    </span>
+                </span>
+            </span>
+        </div>
+        <div>
+            <a class="main-link not-link" href="#faq-other" data-category="faq-tab" data-target="faq-other" data-dependency="faq"><h3>(+) Anything else?</h3>
+            <span class="faq-tab" id="faq-other" data-dependency="faq" hidden>
                 <img src="img/about/potato.png"/>
             </span>
         </div>

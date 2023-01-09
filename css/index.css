@@ -26,16 +26,21 @@ html {
     width: 100%;
 }
 
-a:not(.see-more):not(.button):not(.logo):not(.readable) {
+a:not(.button):not(.not-link) { /* Need to clean that... */
     text-decoration: none;
     border-bottom: dotted 1px;
     color: rgb(191, 200, 255);
 }
 
-a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
+a:not(.button):not(.not-link):hover {
     color: #EF6480;
     border-bottom-color: transparent;
     cursor: pointer;
+}
+
+a.faq-tab {
+    text-decoration: none;
+    color: #e8e6e3;
 }
 
 .button {
@@ -93,16 +98,6 @@ a:not(.see-more):not(.button):not(.logo):not(.readable):hover {
 .see-more.secondary {
     width: 40.4em;
     height: 7.5em;
-}
-
-.question > h3 {
-    border: 1px solid #ccc;
-    padding: .5em;
-    cursor: pointer;
-}
-
-.question > h3:hover {
-    background-color: rgb(204, 204, 204, .1);
 }
 
 [hidden]

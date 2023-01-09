@@ -1,23 +1,34 @@
 let hashTarget = null;
 
 window.onload = function () {
-    const urlParam = window.location.hash;
-
-    if (urlParam !== "")
-    {
-        displayTab('globalTab', urlParam.toLowerCase().substring(1));
-    }
+    let linkReverse = {};
 
     // Link each link to where it should head
-    for (elem of document.getElementsByClassName("main-link")) {
+    for (let elem of document.getElementsByClassName("main-link")) {
+        linkReverse[elem.dataset.target] = elem;
+    }
+    for (let elem of document.getElementsByClassName("main-link")) {
         const target = elem;
         elem.addEventListener("click", () => {
-            displayTab("globalTab", target.dataset.target);
+            displayTab(target.dataset.category, target.dataset.target);
         });
+    }
+    
+    // Lead to right place depending of hash
+    const urlParam = window.location.hash.toLowerCase().substring(1);
+
+    if (urlParam in linkReverse)
+    {
+        let target = linkReverse[urlParam];
+        if (target.dataset.dependency !== undefined) { // If a link is dependent of something else, we open it first
+            var dep = linkReverse[target.dataset.dependency];
+            displayTab(dep.dataset.category, dep.dataset.target);
+        }
+        displayTab(target.dataset.category, urlParam);
     }
 
     // Hover a gamejam image
-    for (elem of document.getElementsByClassName("gamejam")) {
+    for (let elem of document.getElementsByClassName("gamejam")) {
         const img = elem.querySelector("img");
         const imgName = img.src;
         elem.addEventListener("mouseover", _ => { // Display the underlying GIF
@@ -31,20 +42,12 @@ window.onload = function () {
     }
 
     // Link buttons that should show a YouTube embed
-    for (elem of document.getElementsByClassName("youtube-show")) {
+    for (let elem of document.getElementsByClassName("youtube-show")) {
         const target = elem;
         elem.addEventListener("click", _ => {
             const player = document.getElementById(`${target.dataset.target}-yt-player`);
             player.hidden = false;
             player.src = `https://www.youtube-nocookie.com/embed/${target.dataset.id}`;
-        });
-    }
-
-    // Link button of the FAQ to show/hide the content related
-    for (let e of document.getElementsByClassName("question")) {
-        let children = e.children;
-        children[0].addEventListener("click", () => {
-            children[1].hidden = !children[1].hidden;
         });
     }
 
@@ -102,4 +105,6 @@ window.onload = function () {
 
         document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`
     });
+
+    rpg_init();
 };
