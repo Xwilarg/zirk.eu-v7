@@ -100,7 +100,6 @@ function rpg_on_input() {
     else if (actions[input].argCount !== args.length)
     {
         rpg_write_narration(`${to_sentence_case(input)} takes ${actions[input].argCount} argument${(actions[input].argCount > 1 ? "s" : "")}`);
-        return;
     }
     else
     {
