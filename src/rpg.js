@@ -31,6 +31,16 @@ let locations = {
             return true;
         },
         "TOUCH": (args) => {
+            switch (args[0])
+            {
+                case "FLOOR": case "GROUND":
+                    rpg_write_narration("You touch the ground, it feels cold and hard");
+                    decrease_hp();
+                    break;
+
+                default:
+                    return false;
+            }
             return true;
         },
         "WAIT": (_) => {
@@ -113,6 +123,10 @@ function rpg_on_input() {
 
                 case "HELP":
                     rpg_write_narration(`Possible actions:<br/>${Object.keys(actions).map(x => to_sentence_case(x)).join("<br/>")}`);
+                    break;
+                
+                case "TOUCH":
+                    rpg_write_narration("There is nothing to touch with that name");
                     break;
 
                 default:
