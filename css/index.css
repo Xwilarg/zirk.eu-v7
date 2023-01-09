@@ -49,8 +49,8 @@ a.faq-tab {
     margin: .1em;
     border-radius: 5px;
     font-size: 1.7em;
-    color: #222;
-    background-color: #ccc;
+    color: #ccc;
+    background-color: #555;
     padding: 0 .25em;
     cursor: pointer;
     height: 35px;
@@ -63,7 +63,7 @@ a.faq-tab {
 }
 
 .button:hover {
-    color: #ccc;
+    color: #555;
     background-color: #222;
 }
 
@@ -81,7 +81,7 @@ a.faq-tab {
 .see-more {
     width: 20em;
     height: 17.5em;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -111,7 +111,7 @@ table {
 }
 
 td, th {
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     text-align: left;
     padding: 8px;
 }
