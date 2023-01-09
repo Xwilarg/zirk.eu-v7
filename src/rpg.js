@@ -8,7 +8,7 @@ function rpg_init() {
     rpgInput = document.getElementById("rpg-input-field");
     rpgDiv = document.getElementById("rpg-output");
 
-    rpg_write_narration("You open your eyes, everything around you is pitch black so you can't even see your hands.<br/>You try to look into your memories but can't remember anything.<br/>What do you do?");
+    rpg_write_narration("You open your eyes, everything around you is pitch black that you can't even see your hands.<br/>You try to look into your memories but can't remember anything.<br/>What do you do?");
 }
 
 function rpg_write_narration(text) {
