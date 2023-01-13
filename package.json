@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "minify": "^9.1.0",
+    "mkdirp": "^1.0.4"
+  },
+  "scripts": {
+    "build": "mkdirp js/ && minify src/init.js > js/init.js && minify src/tab.js > js/tab.js && cd rpg && npm run build",
+    "serve": "npm run build && php -S localhost:8181"
+  }
+}

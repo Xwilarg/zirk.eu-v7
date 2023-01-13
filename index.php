@@ -5,7 +5,7 @@ require_once "vendor/autoload.php";
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
-$loader = new FilesystemLoader("templates");
+$loader = new FilesystemLoader(["templates", "rpg/templates"]);
 $twig = new Environment($loader);
 
 # Gamejams
@@ -58,7 +58,6 @@ foreach ($data as $project) {
 
 # Display page
 echo $twig->render("index.html.twig", [
-    "css" => [ "index", "gamejam", "project", "about", "intro", "rpg", "faq" ],
     "jams" => $jamData ,
     "projects" => $projectsData,
     "about" => json_decode(file_get_contents("data/json/about.json"), true)

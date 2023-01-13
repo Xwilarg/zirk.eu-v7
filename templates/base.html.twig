@@ -7,13 +7,17 @@
         <meta property="og:title" content="Zirk"/>
 
         <script src="js/tab.js"></script>
-        <script src="js/rpg.js"></script>
+        <script src="rpg/js/index.js"></script>
         <script src="js/init.js"></script>
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
-        {% for file in css %}
-            <link rel="stylesheet" type="text/css" href="css/{{ file }}.css"/>
-        {% endfor %}
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/gamejam.css"/>
+        <link rel="stylesheet" type="text/css" href="css/project.css"/>
+        <link rel="stylesheet" type="text/css" href="css/about.css"/>
+        <link rel="stylesheet" type="text/css" href="css/intro.css"/>
+        <link rel="stylesheet" type="text/css" href="rpg/css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/faq.css"/>
     </head>
     <body>
     {% block content %}{% endblock %}
