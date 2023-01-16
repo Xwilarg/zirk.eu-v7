@@ -164,45 +164,6 @@
         </div>
     </div>
     <div class="global-tab" id="faq" hidden>
-        <div>
-            <a class="main-link not-link" href="#faq-contact" data-category="faq-tab" data-target="faq-contact" data-dependency="faq"><h3>(+) How can I contact you?</h3></a>
-            <span class="faq-tab" id="faq-contact" hidden>
-                <ul>
-                    <li>On Discord: Zirk#0001</li>
-                    <li>By mail: contact@zirk.eu</li>
-                </ul>
-            </span>
-        </div>
-        <div>
-            <a class="main-link not-link" href="#faq-dev" data-category="faq-tab" data-target="faq-dev" data-dependency="faq"><h3>(+) What is this website made with?</h3></a>
-            <span class="faq-tab" id="faq-dev" data-dependency="faq" hidden>
-                Made with an amazing PHP library called <a href="https://twig.symfony.com/" target="_blank">Twig</a><br/>
-                I'm <a href="img/website/v1.png" target="_blank">redoing</a> <a href="img/website/v2.png" target="_blank">it</a> <a href="img/website/v3.png" target="_blank">approximately</a> <a href="img/website/v4.png" target="_blank">once</a> <a href="img/website/v5.png" target="_blank">per</a> <a href="img/website/v6.png" target="_blank">year</a>, hopefully I won't need a V8<br/>
-                The source code is available on <a target="_blank" href="https://github.com/Xwilarg/zirk.eu">GitHub</a>
-            </span>
-        </div>
-        <div>
-            <a class="main-link not-link" href="#faq-cookie" data-category="faq-tab" data-target="faq-cookie" data-dependency="faq"><h3>(+) What cookies does this website use?</h3></a>
-            <span class="faq-tab" id="faq-cookie" data-dependency="faq" hidden>
-                This website itself doesn't use any cookies, clicking on a button in the about section will show a youtube-nocookie.com iframe which use a single "CONSENT" cookie used to store your Google preference regarding cookies<br/>
-                Other than that, YouTube use your local and session storage for some things I have no idea nor control about, more information (probably) in <a href="https://policies.google.com/privacy?hl=en" target="_blank">Google privacy policy</a><br/>
-                <br/>
-                If you feel like this website doesn't use enough cookie, you can click on the button below that will save some random information for one hour: <button id="new-cookie" class="button small">New Cookie</button>
-            </span>
-        </div>
-        <div>
-            <a class="main-link not-link" href="#faq-rpg" data-category="faq-tab" data-target="faq-rpg" data-dependency="faq"><h3>(+) Any easter egg?</h3></a>
-            <span class="faq-tab" id="faq-rpg" data-dependency="faq" hidden>
-                Uh yeah sure, here you are I guess:<br/>
-                <small>I'm still coding that so don't blame me if it doesn't work</small>
-                {% include 'rpg.html.twig' %}
-            </span>
-        </div>
-        <div>
-            <a class="main-link not-link" href="#faq-other" data-category="faq-tab" data-target="faq-other" data-dependency="faq"><h3>(+) Anything else?</h3>
-            <span class="faq-tab" id="faq-other" data-dependency="faq" hidden>
-                <img src="img/about/potato.png"/>
-            </span>
-        </div>
+        {% include 'faq.html.twig' %}
     </div>
 {% endblock %}
