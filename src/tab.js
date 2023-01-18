@@ -2,12 +2,15 @@
 function displayTab(tabClass, currentTabName) {
     let targetElement = document.getElementById(currentTabName);
 
-    for (elem of document.getElementsByClassName(tabClass)) {
+    for (let elem of document.getElementsByClassName(tabClass)) {
         elem.hidden = true;
     }
 
     if (targetElement !== null)
     {
         targetElement.hidden = false;
+        for (let lazy of document.querySelectorAll(`#${currentTabName} .lazy`)) {
+            lazy.src = lazy.dataset.src;
+        }
     }
 }

@@ -93,7 +93,7 @@
         <p>
             {% for social in about.social %}
             <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
-                <img src="data/img/about/logo/{{ social.logo }}"/>
+                <img class="lazy" data-src="data/img/about/logo/{{ social.logo }}"/>
             </a>
             {% endfor %}
         </p>
@@ -159,7 +159,7 @@
         <h3>Readable Stuffs</h3>
         <div>
             {% for novel in about.novels %}
-            <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img src="data/img/about/readable/{{novel.image}}"/></a>
+            <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img class="lazy" data-src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
         </div>
     </div>

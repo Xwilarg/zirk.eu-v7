@@ -4,7 +4,7 @@
             {{jam.event}} {% if jam.theme %} - {{ jam.theme }}{% endif %}<br/>{{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}
         </p>
     </div>
-    <img src="{{ jam.image }}"></img>
+    <img data-src="{{ jam.image }}" class="lazy"></img>
     <br/>
     <span class="jam-info">
         <span class="jam-buttons">

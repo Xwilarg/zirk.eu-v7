@@ -1,6 +1,6 @@
 <div class="project">
     <h2>{{ project.name ?? "&nbsp;" }}</h2>
-    <img src="{{ project.image }}"></img>
+    <img data-src="{{ project.image }}" class="lazy"></img>
     <br/>
     <p>
         {{ project.description }}
