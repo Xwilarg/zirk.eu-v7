@@ -52,18 +52,21 @@ window.onload = function () {
 
     // Link project preview in the big list
     for (let p of document.getElementsByClassName("project-image-preview")) {
-        p.addEventListener("mouseover", _ => { // Show a project preview
-            document.getElementById("project-normal-preview-title").innerHTML = p.dataset.name;
-            document.getElementById("project-normal-preview-image").src = p.dataset.img;
-            document.getElementById("project-normal-preview").hidden = false;
-        });
-        p.addEventListener("mousedown", _ => { // Hide a project preview
-            document.getElementById("project-normal-preview").hidden = true;
-        });
-        p.addEventListener("mouseleave", _ => { // Alternative way to hide a project preview since mousedown isn't called on mobile
-            document.getElementById("project-normal-preview").hidden = true;
+        p.addEventListener("mousedown", e => { // Show a project preview
+            if (p.dataset.img === "" || document.getElementById("project-normal-preview-title").innerHTML === p.dataset.name) {
+                document.getElementById("project-normal-preview").hidden = true;
+            } else {
+                document.getElementById("project-normal-preview-image").src = "";
+                document.getElementById("project-normal-preview-title").innerHTML = p.dataset.name;
+                document.getElementById("project-normal-preview-image").src = p.dataset.img;
+                document.getElementById("project-normal-preview").hidden = false;
+            }
+            e.Handled = true;
         });
     }
+    document.addEventListener("scroll", _ => {
+        document.getElementById("project-normal-preview").hidden = true;
+    });
 
     document.getElementById("new-cookie").addEventListener("click", _ => {
         let data;
