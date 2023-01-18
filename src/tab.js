@@ -12,5 +12,6 @@ function displayTab(tabClass, currentTabName) {
         for (let lazy of document.querySelectorAll(`#${currentTabName} .lazy`)) {
             lazy.src = lazy.dataset.src;
         }
+        targetElement.scrollIntoView();
     }
 }
