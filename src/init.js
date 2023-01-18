@@ -30,13 +30,12 @@ window.onload = function () {
     // Hover a gamejam image
     for (let elem of document.getElementsByClassName("gamejam")) {
         const img = elem.querySelector("img");
-        const imgName = img.src;
-        elem.addEventListener("mouseover", _ => { // Display the underlying GIF
+        elem.addEventListener("mouseover", e => { // Display the underlying GIF
             img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="; // Display an empty image so we don't have the "missing image" thing
-            img.style.backgroundImage = `url(${imgName.substring(0, imgName.length - 4)}.gif)`;
+            img.style.backgroundImage = `url(${img.dataset.src.substring(0, img.dataset.src.length - 4)}.gif)`;
         });
         elem.addEventListener("mouseout", _ => { // Display the image
-            img.src = imgName;
+            img.src = img.dataset.src;
             img.style.backgroundImage = "";
         });
     }
