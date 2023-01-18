@@ -76,7 +76,7 @@
                         <td>{{ project.description }}</td>
                         <td>{{ project.start }} - {{ project.end }}</td>
                         <td>{{ project.languages | join(" ") }}</td>
-                        <td class="project-image-preview" data-name="{{ project.name }}" data-img="{{ project.image }}">{% if project.image is not null %}<i class="fa-solid fa-computer-mouse"></i>{% endif %}</td>
+                        <td>{% if project.image is not null %}<button class="project-image-preview small button" data-name="{{ project.name }}" data-img="{{ project.image }}"><i class="fa-solid fa-computer-mouse"></i></button>{% endif %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

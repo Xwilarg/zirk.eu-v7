@@ -52,7 +52,7 @@ window.onload = function () {
 
     // Link project preview in the big list
     for (let p of document.getElementsByClassName("project-image-preview")) {
-        p.addEventListener("mousedown", e => { // Show a project preview
+        p.addEventListener("click", e => { // Show a project preview
             if (p.dataset.img === "" || document.getElementById("project-normal-preview-title").innerHTML === p.dataset.name) {
                 document.getElementById("project-normal-preview").hidden = true;
             } else {
