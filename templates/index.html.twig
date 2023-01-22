@@ -18,8 +18,11 @@
                 Game Jams
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link not-link secondary" href="#about" data-category="global-tab" data-target="about">
+            <a class="see-more main-link not-link tertiary" href="#about" data-category="global-tab" data-target="about">
                 About Me
+            </a>
+            <a class="see-more main-link not-link quaternary" href="#games" data-category="global-tab" data-target="games">
+                <i class="fa-solid fa-gamepad"></i>
             </a>
             <div class="flex-break"></div>
             <a class="see-more main-link not-link secondary" href="#faq" data-category="global-tab" data-target="faq">
@@ -97,30 +100,6 @@
             </a>
             {% endfor %}
         </p>
-        <h3>Music</h3>
-        <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
-        <div id="about-music">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Play</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for music in about.music %}
-                    <tr>
-                        <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
-                        <td>
-                            {% for youtube in music.youtube %}
-                            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button><br/>
-                            {% endfor %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
         <h3>Games</h3>
         <iframe id="game-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
         <div>
@@ -156,12 +135,40 @@
                 </tbody>
             </table>
         </div>
+        <h3>Music</h3>
+        <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
+        <div id="about-music">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Play</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for music in about.music %}
+                    <tr>
+                        <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
+                        <td>
+                            {% for youtube in music.youtube %}
+                            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button><br/>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         <h3>Readable Stuffs</h3>
         <div>
             {% for novel in about.novels %}
             <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img class="lazy" data-src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
         </div>
+    </div>
+    <div class="global-tab" id="games" hidden>
+        <small>I'm still coding that so don't blame me if it doesn't work</small>
+        {% include 'rpg.html.twig' %}
     </div>
     <div class="global-tab" id="faq" hidden>
         {% include 'faq.html.twig' %}

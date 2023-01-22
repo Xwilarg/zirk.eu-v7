@@ -96,7 +96,17 @@ a.faq-tab {
 }
 
 .see-more.secondary {
-    width: 40.4em;
+    width: 40.5em;
+    height: 7.5em;
+}
+
+.see-more.tertiary {
+    width: 32.5em;
+    height: 7.5em;
+}
+
+.see-more.quaternary {
+    width: 7.5em;
     height: 7.5em;
 }
 
