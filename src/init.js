@@ -108,5 +108,5 @@ window.onload = function () {
         document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`
     });
 
-    rpg_init();
+    new Game_Darkness();
 };
