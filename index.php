@@ -40,8 +40,12 @@ foreach ($data as $jam) {
 }
 
 # Projects
+function projectSort($a, $b) {
+    return strcmp($a["name"], $b["name"]);
+}
 $projectsData = array();
 $data = json_decode(file_get_contents("data/json/projects.json"), true);
+usort($data, "projectSort");
 foreach ($data as $project) {
     array_push($projectsData, [
         "name" => $project["nsfw"] ? null : $project["name"],
