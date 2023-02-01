@@ -94,7 +94,13 @@
         <h2>About</h2>
         <h3>Social</h3>
         <p>
-            {% for social in about.social %}
+            {% for social in about.social.general %}
+            <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
+                <img class="lazy" data-src="data/img/about/logo/{{ social.logo }}"/>
+            </a>
+            {% endfor %}
+            <br/>
+            {% for social in about.social.gamejams %}
             <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
                 <img class="lazy" data-src="data/img/about/logo/{{ social.logo }}"/>
             </a>
