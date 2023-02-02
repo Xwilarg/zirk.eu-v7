@@ -55,6 +55,7 @@ foreach ($data as $jam) {
         "webgl" => $jam["nsfw"] ? null : $jam["webgl"][0],
         "gameplay" => $jam["gameplay"],
         "stream" => $jam["stream"],
+        "entriesTotal" => ($jam["rating"] === null || $jam["rating"]["entries"] === null) ? -1 : $jam["rating"]["entries"],
         "score" => $jam["rating"] === null || $jam["rating"]["scores"] === null || $jam["rating"]["scores"]["Overall"]["rank"] === null ? 1
             : $jam["rating"]["scores"]["Overall"]["rank"] / $jam["rating"]["entries"]
     ]);

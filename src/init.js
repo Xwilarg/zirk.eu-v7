@@ -124,6 +124,21 @@ window.onload = function () {
                     continue;
                 }
             }
+            let en = document.getElementById("filter-entries");
+            if (en.value !== "") {
+                if (en.value === "-1") {
+                    if (game.dataset.entries !== "-1") {
+                        game.hidden = true;
+                        continue;
+                    }
+                }
+                const s = en.value.split('-');
+                const entries = parseInt(game.dataset.entries);
+                if (entries < parseInt(s[0]) || entries > parseInt(s[1])) {
+                    game.hidden = true;
+                    continue;
+                }
+            }
             let y = document.getElementById("filter-year");
             if (y.value !== "" && y.value !== game.dataset.year) {
                 game.hidden = true;
@@ -160,6 +175,10 @@ window.onload = function () {
     });
 
     document.getElementById("filter-event").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-entries").addEventListener("change", _ => {
         filter();
     });
 
