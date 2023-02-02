@@ -15,14 +15,20 @@ $engines = array();
 $events = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 foreach ($data as $jam) {
-    if (!in_array($jam["location"], $locations)) {
-        array_push($locations, $jam["location"]);
+    if (isset($locations[$jam["location"]])) {
+        $locations[$jam["location"]]++;
+    } else {
+        $locations[$jam["location"]] = 1;
     }
-    if (!in_array($jam["engine"], $engines)) {
-        array_push($engines, $jam["engine"]);
+    if (isset($engines[$jam["engine"]])) {
+        $engines[$jam["engine"]]++;
+    } else {
+        $engines[$jam["engine"]] = 1;
     }
-    if (!in_array($jam["shortEvent"], $events)) {
-        array_push($events, $jam["shortEvent"]);
+    if (isset($events[$jam["shortEvent"]])) {
+        $events[$jam["shortEvent"]]++;
+    } else {
+        $events[$jam["shortEvent"]] = 1;
     }
     $overall = 0;
     $entries = 0;
@@ -53,6 +59,9 @@ foreach ($data as $jam) {
             : $jam["rating"]["scores"]["Overall"]["rank"] / $jam["rating"]["entries"]
     ]);
 }
+arsort($locations);
+arsort($engines);
+arsort($events);
 
 # Projects
 function projectSort($a, $b) {
