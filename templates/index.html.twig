@@ -73,6 +73,12 @@
             <option value="{{y}}">{{y}}</option>
             {% endfor %}
         </select>
+        <select id="filter-event">
+            <option value="">Event</option>
+            {% for event in events %}
+            <option value="{{ event }}">{{ event }}</option>
+            {% endfor %}
+        </select>
         <div class="flex full-list">
             {% for jam in jams %}
                 {% include 'gamejam.html.twig' %}

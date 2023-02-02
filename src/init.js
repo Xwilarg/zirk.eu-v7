@@ -134,6 +134,11 @@ window.onload = function () {
                 game.hidden = true;
                 continue;
             }
+            let e2 = document.getElementById("filter-event");
+            if (e2.value !== "" && e2.value !== game.dataset.event) {
+                game.hidden = true;
+                continue;
+            }
             game.hidden = false;
         }
     }
@@ -151,6 +156,10 @@ window.onload = function () {
     });
 
     document.getElementById("filter-engine").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-event").addEventListener("change", _ => {
         filter();
     });
 
