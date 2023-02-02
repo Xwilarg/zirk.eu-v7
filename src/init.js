@@ -108,5 +108,51 @@ window.onload = function () {
         document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`
     });
 
+    function filter() {
+        for (let game of document.querySelectorAll(".full-list .gamejam")) {
+            let l = document.getElementById("filter-location");
+            if (l.value !== "" && l.value !== game.dataset.location) {
+                game.hidden = true;
+                continue;
+            }
+            let d = document.getElementById("filter-duration");
+            if (d.value !== "") {
+                const s = d.value.split('-');
+                const duration = parseInt(game.dataset.duration);
+                if (duration < parseInt(s[0]) || duration > parseInt(s[1])) {
+                    game.hidden = true;
+                    continue;
+                }
+            }
+            let y = document.getElementById("filter-year");
+            if (y.value !== "" && y.value !== game.dataset.year) {
+                game.hidden = true;
+                continue;
+            }
+            let e = document.getElementById("filter-engine");
+            if (e.value !== "" && e.value !== game.dataset.engine) {
+                game.hidden = true;
+                continue;
+            }
+            game.hidden = false;
+        }
+    }
+
+    document.getElementById("filter-location").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-duration").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-year").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-engine").addEventListener("change", _ => {
+        filter();
+    });
+
     new Game_Darkness();
 };

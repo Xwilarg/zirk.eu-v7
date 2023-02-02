@@ -44,7 +44,36 @@
             {% endfor %}
         </div>
         <hr/>
-        <div class="flex">
+        Filter:
+        <select id="filter-location">
+            <option value="">Location</option>
+            {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+        </select>
+        <select id="filter-duration">
+            <option value="">Duration</option>
+            <option value="0-1">≤1h</option>
+            <option value="2-10">2-10h</option>
+            <option value="11-24">1 day</option>
+            <option value="25-48">2 days</option>
+            <option value="49-72">3 days</option>
+            <option value="73-168">1 week</option>
+            <option value="169-10000">> 1 week</option>
+        </select>
+        <select id="filter-engine">
+            <option value="">Game Engine</option>
+            {% for engine in engines %}
+            <option value="{{ engine }}">{{ engine }}</option>
+            {% endfor %}
+        </select>
+        <select id="filter-year">
+            <option value="">Year</option>
+            {% for y in "2016-01-01"|date("Y").."now"|date("Y") %}
+            <option value="{{y}}">{{y}}</option>
+            {% endfor %}
+        </select>
+        <div class="flex full-list">
             {% for jam in jams %}
                 {% include 'gamejam.html.twig' %}
             {% endfor %}

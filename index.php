@@ -10,8 +10,16 @@ $twig = new Environment($loader);
 
 # Gamejams
 $jamData = array();
+$locations = array();
+$engines = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 foreach ($data as $jam) {
+    if (!in_array($jam["location"], $locations)) {
+        array_push($locations, $jam["location"]);
+    }
+    if (!in_array($jam["engine"], $engines)) {
+        array_push($engines, $jam["engine"]);
+    }
     $overall = 0;
     $entries = 0;
     if ($jam["rating"] !== null && $jam["rating"]["scores"] !== null && $jam["rating"]["scores"]["Overall"]["rank"] !== null) {
@@ -26,6 +34,8 @@ foreach ($data as $jam) {
         "event" => $jam["event"],
         "date" => $jam["date"],
         "duration" => $jam["duration"],
+        "location" => $jam["location"],
+        "engine" => $jam["engine"],
         "theme" => count($jam["theme"]) > 0 ? $jam["theme"][0] : null,
         "overall" => $overall,
         "entries" => $entries,
@@ -62,7 +72,9 @@ foreach ($data as $project) {
 
 # Display page
 echo $twig->render("index.html.twig", [
-    "jams" => $jamData ,
+    "jams" => $jamData,
+    "locations" => $locations,
+    "engines" => $engines,
     "projects" => $projectsData,
     "about" => json_decode(file_get_contents("data/json/about.json"), true)
 ]);
