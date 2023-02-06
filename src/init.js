@@ -1,3 +1,5 @@
+import { Game_Darkness } from "../rpg/src/Game"
+
 let hashTarget = null;
 
 window.onload = function () {
