@@ -1,4 +1,4 @@
-<div class="gamejam" data-location="{{jam.location}}" data-duration="{{jam.duration}}" data-year="{{jam.date[:4]}}" data-engine="{{jam.engine}}" data-event="{{jam.shortEvent}}" data-entries="{{jam.entriesTotal}}">
+<div class="gamejam" data-location="{{jam.location}}" data-duration="{{jam.duration}}" data-year="{{jam.date[:4]}}" data-engine="{{jam.engine}}" data-event="{{jam.shortEvent}}" data-entries="{{jam.entriesTotal}}" data-language="{{jam.language | join(';')}}">
     <div class="jam-title">
         <p>
             {{jam.event}}<br/>{% if jam.theme %}{{ jam.theme }} - {% endif %}{{jam.duration}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}

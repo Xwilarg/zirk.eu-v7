@@ -63,6 +63,12 @@
             <option value="{{ key }}">{{ key }} ({{ value }})</option>
             {% endfor %}
         </select>
+        <select id="filter-language">
+            <option value="">Language</option>
+            {% for key, value in languages %}
+            <option value="{{ key }}">{{ key }} ({{ value }})</option>
+            {% endfor %}
+        </select>
         <select id="filter-duration">
             <option value="">Duration</option>
             <option value="0-1">≤1h</option>

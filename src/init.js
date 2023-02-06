@@ -154,6 +154,11 @@ window.onload = function () {
                 game.hidden = true;
                 continue;
             }
+            let lang = document.getElementById("filter-language");
+            if (lang.value !== "" && !game.dataset.language.split(';').includes(lang.value)) {
+                game.hidden = true;
+                continue;
+            }
             game.hidden = false;
         }
     }
@@ -179,6 +184,10 @@ window.onload = function () {
     });
 
     document.getElementById("filter-entries").addEventListener("change", _ => {
+        filter();
+    });
+
+    document.getElementById("filter-language").addEventListener("change", _ => {
         filter();
     });
 

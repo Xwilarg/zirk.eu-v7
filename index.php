@@ -13,6 +13,7 @@ $jamData = array();
 $locations = array();
 $engines = array();
 $events = array();
+$languages = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 foreach ($data as $jam) {
     if (isset($locations[$jam["location"]])) {
@@ -29,6 +30,13 @@ foreach ($data as $jam) {
         $events[$jam["shortEvent"]]++;
     } else {
         $events[$jam["shortEvent"]] = 1;
+    }
+    foreach ($jam["language"] as $l) {
+        if (isset($languages[$l])) {
+            $languages[$l]++;
+        } else {
+            $languages[$l] = 1;
+        }
     }
     $overall = 0;
     $entries = 0;
@@ -52,9 +60,10 @@ foreach ($data as $jam) {
         "entries" => $entries,
         "website" => $jam["nsfw"] ? null : $jam["website"],
         "source" => $jam["nsfw"] ? null : $jam["github"],
-        "webgl" => $jam["nsfw"] ? null : $jam["webgl"][0],
+        "webgl" => $jam["nsfw"] || count($jam["webgl"]) == 0 ? null : $jam["webgl"][0],
         "gameplay" => $jam["gameplay"],
         "stream" => $jam["stream"],
+        "language" => $jam["language"],
         "entriesTotal" => ($jam["rating"] === null || $jam["rating"]["entries"] === null) ? -1 : $jam["rating"]["entries"],
         "score" => $jam["rating"] === null || $jam["rating"]["scores"] === null || $jam["rating"]["scores"]["Overall"]["rank"] === null ? 1
             : $jam["rating"]["scores"]["Overall"]["rank"] / $jam["rating"]["entries"]
@@ -63,6 +72,7 @@ foreach ($data as $jam) {
 arsort($locations);
 arsort($engines);
 arsort($events);
+arsort($languages);
 
 # Projects
 function projectSort($a, $b) {
@@ -92,5 +102,6 @@ echo $twig->render("index.html.twig", [
     "engines" => $engines,
     "events" => $events,
     "projects" => $projectsData,
+    "languages" => $languages,
     "about" => json_decode(file_get_contents("data/json/about.json"), true)
 ]);
