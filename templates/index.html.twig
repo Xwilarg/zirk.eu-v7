@@ -39,63 +39,66 @@
         </p>
         <h3>Best Scores (≥24h)</h3>
         <div class="flex">
-            {% for jam in jams | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
+            {% for jam in jams.data | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
                 {% include 'gamejam.html.twig' %}
             {% endfor %}
         </div>
         <hr/>
-        Filter:
-        <select id="filter-location">
-            <option value="">Location</option>
-            {% for key, value in locations %}
-            <option value="{{ key }}">{{ key }} ({{ value }})</option>
-            {% endfor %}
-        </select>
-        <select id="filter-engine">
-            <option value="">Game Engine</option>
-            {% for key, value in engines %}
-            <option value="{{ key }}">{{ key }} ({{ value }})</option>
-            {% endfor %}
-        </select>
-        <select id="filter-event">
-            <option value="">Event</option>
-            {% for key, value in events %}
-            <option value="{{ key }}">{{ key }} ({{ value }})</option>
-            {% endfor %}
-        </select>
-        <select id="filter-language">
-            <option value="">Language</option>
-            {% for key, value in languages %}
-            <option value="{{ key }}">{{ key }} ({{ value }})</option>
-            {% endfor %}
-        </select>
-        <select id="filter-duration">
-            <option value="">Duration</option>
-            <option value="0-1">≤1h</option>
-            <option value="2-10">&lt;1 day</option>
-            <option value="11-24">1 day</option>
-            <option value="25-48">2 days</option>
-            <option value="49-72">3 days</option>
-            <option value="73-168">1 week</option>
-            <option value="169-10000">&gt;1 week</option>
-        </select>
-        <select id="filter-entries">
-            <option value="">Entries</option>
-            <option value="-1">Unknown</option>
-            <option value="2-10">≤10</option>
-            <option value="11-100">≤100</option>
-            <option value="101-1000">≤1000</option>
-            <option value="1001-5000">≤5000</option>
-            <option value="5001-100000">&gt;5000</option>
-        </select>
-        <select id="filter-year">
-            <option value="">Year</option>
-            {% for y in "2016-01-01"|date("Y").."now"|date("Y") %}
-            <option value="{{y}}">{{y}}</option>
-            {% endfor %}
-        </select>
+        <h4>{{ jams.data | length }} total entries</h4>
+        <div class="filter">
+            Filter:
+            <select id="filter-location">
+                <option value="">Location</option>
+                {% for key, value in jams.locations %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                {% endfor %}
+            </select>
+            <select id="filter-engine">
+                <option value="">Game Engine</option>
+                {% for key, value in jams.engines %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                {% endfor %}
+            </select>
+            <select id="filter-event">
+                <option value="">Event</option>
+                {% for key, value in jams.events %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                {% endfor %}
+            </select>
+            <select id="filter-language">
+                <option value="">Language</option>
+                {% for key, value in jams.languages %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                {% endfor %}
+            </select>
+            <select id="filter-duration">
+                <option value="">Duration</option>
+                <option value="0-1">≤1h</option>
+                <option value="2-10">&lt;1 day</option>
+                <option value="11-24">1 day</option>
+                <option value="25-48">2 days</option>
+                <option value="49-72">3 days</option>
+                <option value="73-168">1 week</option>
+                <option value="169-10000">&gt;1 week</option>
+            </select>
+            <select id="filter-entries">
+                <option value="">Entries</option>
+                <option value="-1">Unknown</option>
+                <option value="2-10">≤10</option>
+                <option value="11-100">≤100</option>
+                <option value="101-1000">≤1000</option>
+                <option value="1001-5000">≤5000</option>
+                <option value="5001-100000">&gt;5000</option>
+            </select>
+            <select id="filter-year">
+                <option value="">Year</option>
+                {% for y in "2016-01-01"|date("Y").."now"|date("Y") %}
+                <option value="{{y}}">{{y}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="flex full-list">
-            {% for jam in jams %}
+            {% for jam in jams.data %}
                 {% include 'gamejam.html.twig' %}
             {% endfor %}
         </div>

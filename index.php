@@ -97,11 +97,13 @@ foreach ($data as $project) {
 
 # Display page
 echo $twig->render("index.html.twig", [
-    "jams" => $jamData,
-    "locations" => $locations,
-    "engines" => $engines,
-    "events" => $events,
+    "jams" => [
+        "data" => $jamData,
+        "locations" => $locations,
+        "engines" => $engines,
+        "events" => $events,
+        "languages" => $languages
+    ],
     "projects" => $projectsData,
-    "languages" => $languages,
     "about" => json_decode(file_get_contents("data/json/about.json"), true)
 ]);
