@@ -1,10 +1,10 @@
-.question h3 {
+.question a > h3 {
     border: 1px solid #555;
     padding: .5em;
     cursor: pointer;
 }
 
-.question h3:hover {
+.question a > h3:hover {
     background-color: rgb(204, 204, 204, .1);
 }
 

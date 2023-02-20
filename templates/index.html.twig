@@ -33,10 +33,24 @@
     <div class="global-tab" id="gamejam" hidden>
         <h2>Game Jams</h2>
         <p class="explanation">
-            Gamejams are event when you need to make a game under a certain time (usually 48 or 72 hours for the most common events) given a certain theme<br/>
+            Gamejams are event when you need to make a game as a team under a certain time (usually 48 or 72 hours for the most common events) given a certain theme<br/>
             Jams here are all the ones I did (where we managed to submit something before the deadline)<br/>
             You probably want to open this page on desktop since these games usually aren't designed for mobile
         </p>
+        <div class="question">
+            <a class="main-link not-link" href="#gamejam-more" data-category="jaminfo-tab" data-target="gamejam-more" data-dependency="gamejam"><h3>(+) More information</h3></a>
+            <span class="jaminfo-tab" id="gamejam-more" hidden>
+                Gamejams here contains the following information:
+                <ul>
+                    <li>Event name: Name of the event goes by, it can sometimes reflect additional constraints</li>
+                    <li>Theme: Sometimes there are not, sometimes there are many, the goal is to make a game that follow it</li>
+                    <li>Duration: Time the jam goes for, for in-person events this time usually contains things such as conference, team creation, presentation in front of a jury... so it might not reflect the total amount of time spent on the game</li>
+                    <li>Starting Date: Date at which the event started</li>
+                    <li>Rank: If there is a voting phase at the end of the game, final score out of how many games were ranked, the total amount of game published may be higher than that</li>
+                    <li>Tier: Based on the rank, calculated the following way: Overall rank / Number of entries rated * 100</li>
+                </ul>
+            </span>
+        </div>
         <h3>Best Scores (≥24h)</h3>
         <div class="flex">
             {% for jam in jams.data | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
