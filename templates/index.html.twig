@@ -42,12 +42,24 @@
             <span class="jaminfo-tab" id="gamejam-more" hidden>
                 Gamejams here contains the following information:
                 <ul>
-                    <li>Event name: Name of the event goes by, it can sometimes reflect additional constraints</li>
+                    <li>Jam name: Name with which the jam goes by, it can sometimes reflect additional constraints</li>
                     <li>Theme: Sometimes there are not, sometimes there are many, the goal is to make a game that follow it</li>
                     <li>Duration: Time the jam goes for, for in-person events this time usually contains things such as conference, team creation, presentation in front of a jury... so it might not reflect the total amount of time spent on the game</li>
                     <li>Starting Date: Date at which the event started</li>
                     <li>Rank: If there is a voting phase at the end of the game, final score out of how many games were ranked, the total amount of game published may be higher than that</li>
                     <li>Tier: Based on the rank, calculated the following way: Overall rank / Number of entries rated * 100</li>
+                </ul>
+                <hr/>
+                Filters:
+                <ul>
+                    <li>Location: City the jam was organized in if it was actually did in presential</li>
+                    <li>Game Engine: Engine the jam was made with</li>
+                    <li>Event: Name of the event itself</li>
+                    <li>Language: Language available in-game</li>
+                    <li>Participants: People that participated to the jam, this usually mean the base team referenced in the credits which may not count people that just came by in the middle of it to fix something or who weren't referrenced for some reason, for privacy reason these are censorred for now</li>
+                    <li>Duration: Duration of the jam, explained above</li>
+                    <li>Entries: Total number of entry for an event</li>
+                    <li>Year at which the jam was done</li>
                 </ul>
             </span>
         </div>
@@ -82,6 +94,12 @@
             <select id="filter-language">
                 <option value="">Language</option>
                 {% for key, value in jams.languages %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                {% endfor %}
+            </select>
+            <select id="filter-people">
+                <option value="">Participants</option>
+                {% for key, value in jams.people %}
                 <option value="{{ key }}">{{ key }} ({{ value }})</option>
                 {% endfor %}
             </select>

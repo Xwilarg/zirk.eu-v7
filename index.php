@@ -14,6 +14,7 @@ $locations = array();
 $engines = array();
 $events = array();
 $languages = array();
+$people = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 foreach ($data as $jam) {
     if (isset($locations[$jam["location"]])) {
@@ -38,6 +39,16 @@ foreach ($data as $jam) {
             $languages[$l] = 1;
         }
     }
+    foreach ($jam["team"] as $t) {
+        if ($t === "D35298FE0A5D34C1A0DB4D02E00BD1F1") {
+            continue;
+        }
+        if (isset($people[$t])) {
+            $people[$t]++;
+        } else {
+            $people[$t] = 1;
+        }
+    }
     $overall = 0;
     $entries = 0;
     if ($jam["rating"] !== null && $jam["rating"]["scores"] !== null && $jam["rating"]["scores"]["Overall"]["rank"] !== null) {
@@ -57,6 +68,7 @@ foreach ($data as $jam) {
         "engine" => $jam["engine"],
         "theme" => count($jam["theme"]) > 0 ? $jam["theme"][0] : null,
         "overall" => $overall,
+        "team" => $jam["team"],
         "entries" => $entries,
         "website" => $jam["nsfw"] ? null : $jam["website"],
         "source" => $jam["nsfw"] ? null : $jam["github"],
@@ -73,6 +85,7 @@ arsort($locations);
 arsort($engines);
 arsort($events);
 arsort($languages);
+arsort($people);
 
 # Projects
 function projectSort($a, $b) {
@@ -102,7 +115,8 @@ echo $twig->render("index.html.twig", [
         "locations" => $locations,
         "engines" => $engines,
         "events" => $events,
-        "languages" => $languages
+        "languages" => $languages,
+        "people" => $people
     ],
     "projects" => $projectsData,
     "about" => json_decode(file_get_contents("data/json/about.json"), true)
