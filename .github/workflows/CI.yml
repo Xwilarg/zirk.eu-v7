@@ -30,7 +30,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Install JS dependencies
-      run: npm i && cd rpg && npm i
+      run: npm i
     
     - name: Build website
       run: npm run build
@@ -43,7 +43,7 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.DEPLOY_SSHKEY }}
       with:
-        source: "css/,data/,img/,js/,templates/,index.php,rpg/"
+        source: "css/,data/,img/,js/,templates/,index.php"
         target: ${{ secrets.DEPLOY_TARGET }}
 
     - name: Purge Cloudflare Cache

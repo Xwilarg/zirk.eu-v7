@@ -1,5 +1,3 @@
-import { Game_Darkness } from "../rpg/src/Game"
-
 window.onload = function () {
     let linkReverse = {};
 
@@ -200,6 +198,4 @@ window.onload = function () {
     document.getElementById("filter-people").addEventListener("change", _ => {
         filter();
     });
-
-    new Game_Darkness();
 };
