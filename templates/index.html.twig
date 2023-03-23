@@ -18,11 +18,8 @@
                 Game Jams
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link not-link tertiary" href="#about" data-category="global-tab" data-target="about">
+            <a class="see-more main-link not-link secondary" href="#about" data-category="global-tab" data-target="about">
                 About Me
-            </a>
-            <a class="see-more main-link not-link quaternary" href="#games" data-category="global-tab" data-target="games">
-                <i class="fa-solid fa-gamepad"></i>
             </a>
             <div class="flex-break"></div>
             <a class="see-more main-link not-link secondary" href="#faq" data-category="global-tab" data-target="faq">
@@ -255,9 +252,6 @@
             <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img class="lazy" data-src="data/img/about/readable/{{novel.image}}"/></a>
             {% endfor %}
         </div>
-    </div>
-    <div class="global-tab" id="games" hidden>
-        (TODO)
     </div>
     <div class="global-tab" id="faq" hidden>
         {% include 'faq.html.twig' %}
