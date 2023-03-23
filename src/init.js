@@ -167,35 +167,13 @@ window.onload = function () {
         }
     }
 
-    document.getElementById("filter-location").addEventListener("change", _ => {
-        filter();
-    });
+    let filters = [
+        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-language", "filter-people"
+    ]
 
-    document.getElementById("filter-duration").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-year").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-engine").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-event").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-entries").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-language").addEventListener("change", _ => {
-        filter();
-    });
-
-    document.getElementById("filter-people").addEventListener("change", _ => {
-        filter();
-    });
+    for (let f of filters) {
+        document.getElementById(f).addEventListener("change", _ => {
+            filter();
+        });
+    }
 };
