@@ -1,0 +1,81 @@
+
+<h2>About</h2>
+<h3>Social</h3>
+<p>
+    {% for social in about.social.general %}
+    <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
+        <img class="lazy" data-src="data/img/about/logo/{{ social.logo }}"/>
+    </a>
+    {% endfor %}
+    <br/>
+    {% for social in about.social.gamejams %}
+    <a class="logo not-link" href="{{ social.link }}" target="_blank" rel="me" alt="{{ social.name }}">
+        <img class="lazy" data-src="data/img/about/logo/{{ social.logo }}"/>
+    </a>
+    {% endfor %}
+</p>
+<h3>Games</h3>
+<iframe id="game-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Trailer</th>
+                <th>Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in about.games %}
+            <tr>
+                <td><a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a></td>
+                <td>
+                    {% if game.video is not null %}
+                    <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-video"></i></button>
+                    {% endif %}
+                    {% if game.gameplay is not null %}
+                    <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-gamepad"></i></button>
+                    {% endif %}
+                </td>
+                <td>
+                    {% for link in game.links %}
+                        {% if link.type == "link" or link.type == "image" %}
+                        <a href="{{ link.content }}" target="_blank">{{ link.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<h3>Music</h3>
+<iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
+<div id="about-music">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Play</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for music in about.music %}
+            <tr>
+                <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
+                <td>
+                    {% for youtube in music.youtube %}
+                    <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button><br/>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<h3>Readable Stuffs</h3>
+<div>
+    {% for novel in about.novels %}
+    <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img class="lazy" data-src="data/img/about/readable/{{novel.image}}"/></a>
+    {% endfor %}
+</div>
