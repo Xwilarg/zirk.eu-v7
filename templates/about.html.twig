@@ -51,27 +51,15 @@
 </div>
 <h3>Music</h3>
 <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
-<div id="about-music">
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Play</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for music in about.music %}
-            <tr>
-                <td><a href="{{ music.link }}" target="_blank">{{ music.name }}</a></td>
-                <td>
-                    {% for youtube in music.youtube %}
-                    <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button><br/>
-                    {% endfor %}
-                </td>
-            </tr>
+<div id="about-music" class="flex">
+    {% for music in about.music %}
+        <div>
+            <a href="{{ music.link }}" target="_blank">{{ music.name }}</a><br/>
+            {% for youtube in music.youtube %}
+            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.name }}</button><br/>
             {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    {% endfor %}
 </div>
 <h3>Readable Stuffs</h3>
 <div>

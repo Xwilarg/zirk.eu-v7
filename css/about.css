@@ -9,8 +9,8 @@ table {
     margin-top: 0;
 }
 
-#about-music table button {
-    width: 100%;
+#about-music button {
+    width: 300px;
 }
 
 a.logo {
