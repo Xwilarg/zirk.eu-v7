@@ -16,7 +16,8 @@ $events = array();
 $languages = array();
 $people = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
-foreach ($data as $jam) {
+$jamParticipants = $data["people"];
+foreach ($data["jams"] as $jam) {
     if (isset($locations[$jam["location"]])) {
         $locations[$jam["location"]]++;
     } else {
@@ -39,10 +40,21 @@ foreach ($data as $jam) {
             $languages[$l] = 1;
         }
     }
+
+    // Replace team people by their name
+    $currTeam = [];
     foreach ($jam["team"] as $t) {
         if ($t === "D35298FE0A5D34C1A0DB4D02E00BD1F1") {
             continue;
         }
+        if (isset($jamParticipants[$t])) {
+            $t = $jamParticipants[$t]["name"];
+        }
+        array_push($currTeam, $t);
+    }
+
+    // Add team people at the list of people
+    foreach ($currTeam as $t) {
         if (isset($people[$t])) {
             $people[$t]++;
         } else {
@@ -68,7 +80,7 @@ foreach ($data as $jam) {
         "engine" => $jam["engine"],
         "theme" => count($jam["theme"]) > 0 ? $jam["theme"][0] : null,
         "overall" => $overall,
-        "team" => $jam["team"],
+        "team" => $currTeam,
         "entries" => $entries,
         "website" => $jam["nsfw"] ? null : $jam["website"],
         "source" => $jam["nsfw"] ? null : $jam["github"],

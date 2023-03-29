@@ -158,7 +158,6 @@ window.onload = function () {
                 continue;
             }
             let pe = document.getElementById("filter-people");
-            console.log(pe);
             if (pe.value !== "" && !game.dataset.team.split(';').includes(pe.value)) {
                 game.hidden = true;
                 continue;
