@@ -29,6 +29,7 @@
                 <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-gamepad"></i></button>
                 {% endif %}
             </div>
+            <hr/>
             <div>
                 {% for link in game.links %}
                     {% if link.type == "link" or link.type == "image" %}
