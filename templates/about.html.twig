@@ -16,38 +16,27 @@
 </p>
 <h3>Games</h3>
 <iframe id="game-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Trailer</th>
-                <th>Links</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for game in about.games %}
-            <tr>
-                <td><a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a></td>
-                <td>
-                    {% if game.video is not null %}
-                    <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-video"></i></button>
+<div id="about-games" class="flex">
+    {% for game in about.games %}
+        <div>
+            <a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a>
+            <div>
+                {% if game.video is not null %}
+                <button class="youtube-show button small" data-id="{{ game.video }}" data-target="game"><i class="fa-solid fa-video"></i></button>
+                {% endif %}
+                {% if game.gameplay is not null %}
+                <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-gamepad"></i></button>
+                {% endif %}
+            </div>
+            <div>
+                {% for link in game.links %}
+                    {% if link.type == "link" or link.type == "image" %}
+                    <a href="{{ link.content }}" target="_blank">{{ link.name }}</a><br/>
                     {% endif %}
-                    {% if game.gameplay is not null %}
-                    <button class="youtube-show button small" data-id="{{ game.gameplay }}" data-target="game"><i class="fa-solid fa-gamepad"></i></button>
-                    {% endif %}
-                </td>
-                <td>
-                    {% for link in game.links %}
-                        {% if link.type == "link" or link.type == "image" %}
-                        <a href="{{ link.content }}" target="_blank">{{ link.name }}</a>
-                        {% endif %}
-                    {% endfor %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 </div>
 <h3>Music</h3>
 <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
