@@ -45,10 +45,3 @@ jobs:
       with:
         source: "css/,data/,img/,js/,templates/,index.php"
         target: ${{ secrets.DEPLOY_TARGET }}
-
-    - name: Purge Cloudflare Cache
-      run: |
-        curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
-        -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_TOKEN }}" \
-        -H "Content-Type: application/json" \
-        --data '{"purge_everything":true}'
