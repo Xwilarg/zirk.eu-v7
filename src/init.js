@@ -3,7 +3,7 @@ window.onload = function () {
 
     // Link each link to where it should head
     for (let elem of document.getElementsByClassName("main-link")) {
-        linkReverse[elem.dataset.target] = elem;
+        linkReverse[elem.dataset.target.toLowerCase()] = elem;
     }
     for (let elem of document.getElementsByClassName("main-link")) {
         const target = elem;
