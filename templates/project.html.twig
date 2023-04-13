@@ -7,11 +7,18 @@
     </p>
     <a class="button main-link" href="#project-{{ project.name | lower }}" data-category="project-tab" data-target="project-{{ project.name }}" data-dependency="project">Read More</a>
     <div class="project-tab" id="project-{{ project.name | lower }}" hidden>
-        {% for link in project.links | filter(x => x.name != "Source Code") %}
+        {% for component in project.highlight.components %}
+            <h3>{{ component.name }}</h3>
+            <small>{{ component.techDescription }}</small>
+            <p>
+                {{ component.description | join('<br/>') | raw }}
+            </p>
+        {% endfor %}
+        <!--{% for link in project.links | filter(x => x.name != "Source Code") %}
             <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>{{ link.name }}</span></a>
         {% endfor %}
         {% for link in project.links | filter(x => x.name == "Source Code") %}
             <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i><span>{{ link.name }}</span></a>
-        {% endfor %}
+        {% endfor %}-->
     </div>
 </div>

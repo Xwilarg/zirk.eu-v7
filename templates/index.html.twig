@@ -138,7 +138,7 @@
             If you scroll down a bit more you can get a more or less complete list of all the projects I worked on
         </p>
         <div class="flex">
-            {% for project in projects | filter(x => x.highlight) %}
+            {% for project in projects | filter(x => x.highlight != null) %}
                 {% include 'project.html.twig' %}
             {% endfor %}
         </div>
