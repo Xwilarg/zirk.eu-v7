@@ -5,7 +5,7 @@
     <p>
         {{ project.description }}
     </p>
-    <a class="button main-link" href="#project-{{ project.name | lower }}" data-category="project-tab" data-target="project-{{ project.name }}" data-dependency="project">Read More</a>
+    <a class="button main-link" href="#project-{{ project.name | lower }}" data-category="project-tab" data-target="project-{{ project.name | lower }}" data-dependency="project">Read More</a>
     <div class="project-tab" id="project-{{ project.name | lower }}" hidden>
         {% for component in project.highlight.components %}
             <h3>{{ component.name }}</h3>
