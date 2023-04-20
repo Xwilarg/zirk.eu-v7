@@ -135,10 +135,10 @@
         <h2>Projects</h2>
         <p class="explanation">
             There are the list of the projects I'm currently working on<br/>
-            If you scroll down a bit more you can get a more or less complete list of all the projects I worked on
+            If you scroll down a bit more you can get a more or less complete list of all of them
         </p>
         <div class="flex">
-            {% for project in projects | filter(x => x.highlight != null) %}
+            {% for project in projects | filter(x => x.end == null) %}
                 {% include 'project.html.twig' %}
             {% endfor %}
         </div>

@@ -30,6 +30,10 @@
     }
 }
 
+#project .buttons {
+    flex-flow: column;
+}
+
 #project .project-name {
     word-break: break-all;
 }

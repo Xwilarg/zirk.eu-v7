@@ -1,11 +1,21 @@
 <div class="project">
     <h2>{{ project.name ?? "&nbsp;" }}</h2>
-    <img data-src="{{ project.image }}" class="lazy"></img>
+    <img data-src="{{ project.image ?? "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" }}" class="lazy"></img>
     <br/>
     <p>
         {{ project.description }}
     </p>
-    <a class="button main-link" href="#project-{{ project.name | lower }}" data-category="project-tab" data-target="project-{{ project.name | lower }}" data-dependency="project">Read More</a>
+    <div class="flex buttons">
+        {% for link in project.links | filter(x => not x.name starts with "Source Code") %}
+            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>&nbsp;{{ link.name }}</span></a>
+        {% endfor %}
+        {% for link in project.links | filter(x => x.name starts with "Source Code") %}
+            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i><span>&nbsp;{{ link.name }}</span></a>
+        {% endfor %}
+        {% if project.highlight != null %}
+            <a class="button main-link" href="#project-{{ project.name | lower }}" data-category="project-tab" data-target="project-{{ project.name | lower }}" data-dependency="project">Read More</a>
+        {% endif %}
+    </div>
     <div class="project-tab" id="project-{{ project.name | lower }}" hidden>
         {% for component in project.highlight.components %}
             <h3>{{ component.name }}</h3>
@@ -14,11 +24,5 @@
                 {{ component.description | join('<br/>') | raw }}
             </p>
         {% endfor %}
-        <!--{% for link in project.links | filter(x => x.name != "Source Code") %}
-            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>{{ link.name }}</span></a>
-        {% endfor %}
-        {% for link in project.links | filter(x => x.name == "Source Code") %}
-            <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-brands fa-github"></i><span>{{ link.name }}</span></a>
-        {% endfor %}-->
     </div>
 </div>
