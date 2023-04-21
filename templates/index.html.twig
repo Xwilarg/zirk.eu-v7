@@ -120,7 +120,7 @@
             </select>
             <select id="filter-year">
                 <option value="">Year</option>
-                {% for y in "2016-01-01"|date("Y").."now"|date("Y") %}
+                {% for y in "now"|date("Y").."2016-01-01"|date("Y") %}
                 <option value="{{y}}">{{y}}</option>
                 {% endfor %}
             </select>
