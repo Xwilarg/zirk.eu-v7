@@ -62,7 +62,7 @@
         </div>
         <h3>Best Scores (≥24h)</h3>
         <div class="flex">
-            {% for jam in jams.data | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:3] %}
+            {% for jam in jams.data | filter(x => x.duration >= 24) | sort((a, b) => a.score <=> b.score)[:6] %}
                 {% include 'gamejam.html.twig' %}
             {% endfor %}
         </div>
