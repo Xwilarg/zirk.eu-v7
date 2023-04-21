@@ -6,7 +6,7 @@
         {{ project.description }}
     </p>
     <div class="flex buttons">
-        {% for link in project.links | filter(x => not x.name starts with "Source Code") %}
+        {% for link in project.links | filter(x => not (x.name starts with "Source Code")) %}
             <a class="button" target="_blank" href="{{ link.content }}"><i class="fa-solid fa-globe"></i><span>&nbsp;{{ link.name }}</span></a>
         {% endfor %}
         {% for link in project.links | filter(x => x.name starts with "Source Code") %}
