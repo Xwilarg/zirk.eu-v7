@@ -1,10 +1,17 @@
 let isSketchLoaded = false;
 let sketchInstance;
 
+function explanation_show_sketch(id)
+{
+    document.querySelectorAll("unity-explanations").forEach(e => e.hidden = true);
+    document.getElementById(`${id}-expl`).hidden = false;
+}
+
 function setup_sketch()
 {
     document.getElementById("sketch-map-gen").addEventListener("click", _ => {
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'MapGeneration');
+        explanation_show_sketch("sketch-map-gen");
     });
 }
 
