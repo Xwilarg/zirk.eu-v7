@@ -170,12 +170,17 @@ window.onload = function () {
                 game.hidden = true;
                 continue;
             }
+            let alone = document.getElementById("filter-alone");
+            if (alone.checked && game.dataset.team !== "") {
+                game.hidden = true;
+                continue;
+            }
             game.hidden = false;
         }
     }
 
     let filters = [
-        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-language", "filter-people"
+        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-language", "filter-people", "filter-alone"
     ]
 
     for (let f of filters) {
