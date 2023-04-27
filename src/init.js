@@ -15,6 +15,14 @@ window.onload = function () {
     // Lead to right place depending of hash
     const urlParam = window.location.hash.toLowerCase().substring(1);
 
+    setup_sketch();
+    document.getElementById("sketch-data").addEventListener("click", _=> {
+        load_sketch();
+    });
+    if (urlParam == "sketch") {
+        load_sketch();
+    }
+
     if (urlParam in linkReverse)
     {
         let target = linkReverse[urlParam];

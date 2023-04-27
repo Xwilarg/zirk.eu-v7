@@ -3,7 +3,7 @@
     "esbuild": "^0.17.6"
   },
   "scripts": {
-    "build": "esbuild src/tab.js --minify --outfile=js/tab.js && esbuild src/init.js --bundle --minify --outfile=js/init.js",
+    "build": "esbuild src/tab.js --minify --outfile=js/tab.js && esbuild src/init.js --bundle --minify --outfile=js/init.js && esbuild src/sketch.js --minify --outfile=js/sketch.js",
     "serve": "npm run build && php -S localhost:8181"
   }
 }

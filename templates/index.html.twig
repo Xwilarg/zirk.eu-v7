@@ -11,6 +11,10 @@
     </div>
     <div class="container">
         <div class="flex">
+            <a class="see-more main-link not-link secondary" href="#sketch" data-category="global-tab" data-target="sketch" id="sketch-data">
+                Sketch
+            </a>
+            <div class="flex-break"></div>
             <a class="see-more main-link not-link" href="#project" data-category="global-tab" data-target="project">
                 Projects
             </a>
@@ -26,6 +30,9 @@
                 FAQ
             </a>
         </div>
+    </div>
+    <div class="global-tab" id="sketch" hidden>
+        {% include 'sketch.html.twig' %}
     </div>
     <div class="global-tab" id="gamejam" hidden>
         <h2>Game Jams</h2>

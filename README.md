@@ -7,13 +7,13 @@ First install PHP dependencies:
 ```
 composer i
 ```
-Also install minify
+Also install the JS dependencies
 ```
-npm i minify -g
+npm i
 ```
-Minify the JS files
+Build the JS files
 ```
-./minify.sh
+npm run build
 ```
 Run the PHP server
 ```

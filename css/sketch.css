@@ -1,0 +1,25 @@
+
+#unity-canvas
+{
+    width: 960px;
+    height: 600px;
+}
+
+@media (max-width: 960px) {
+    #unity-canvas
+    {
+        width: 90vw;
+        height: calc(90vw/1.6);
+    }
+}
+
+#unity-warning
+{
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    background: white;
+    padding: 10px;
+    display: none;
+}

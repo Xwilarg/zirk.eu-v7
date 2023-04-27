@@ -19,7 +19,7 @@
 <div id="about-games" class="flex">
     {% for game in about.games %}
         <div>
-            <img src="data/img/about/logo/{{ game.logo }}"><br/>
+            <img class="lazy" data-src="data/img/about/logo/{{ game.logo }}"><br/>
             <a href="{{ game.store.link }}" target="_blank">{{ game.name }}</a>
             <div>
                 {% if game.video is not null %}
