@@ -18,10 +18,11 @@ $people = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 $jamParticipants = $data["people"];
 foreach ($data["jams"] as $jam) {
-    if (isset($locations[$jam["location"]])) {
-        $locations[$jam["location"]]++;
+    $location = trim(end(explode(",", $jam["location"])));
+    if (isset($locations[$location])) {
+        $locations[$location]++;
     } else {
-        $locations[$jam["location"]] = 1;
+        $locations[$location] = 1;
     }
     if (isset($engines[$jam["engine"]])) {
         $engines[$jam["engine"]]++;
@@ -76,7 +77,7 @@ foreach ($data["jams"] as $jam) {
         "shortEvent" => $jam["shortEvent"],
         "date" => $jam["date"],
         "duration" => $jam["duration"],
-        "location" => $jam["location"],
+        "location" => $location,
         "engine" => $jam["engine"],
         "theme" => count($jam["theme"]) > 0 ? $jam["theme"][0] : null,
         "overall" => $overall,
