@@ -13,7 +13,6 @@ function load_sketch() {
     if (isSketchLoaded) return;
     isSketchLoaded = true;
 
-    const container = document.querySelector("#unity-container");
     const canvas = document.querySelector("#unity-canvas");
     const warningBanner = document.querySelector("#unity-warning");
 
@@ -47,7 +46,7 @@ function load_sketch() {
         productVersion: "1.0",
         showBanner: unityShowBanner,
     };
-    
+
     const script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
