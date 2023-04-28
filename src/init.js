@@ -87,7 +87,7 @@ window.onload = function () {
                 break;
 
             case 2:
-                data = `${navigator.oscpu}`; // Current OS
+                data = `${navigator.oscpu}`; // Current OS (undefined on Chrome but uh)
                 break;
 
             case 3:
@@ -111,7 +111,8 @@ window.onload = function () {
                 break;
         }
 
-        document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`
+        document.cookie = `ZIRK_${Math.floor(Math.random() * 100000)}=${data}; max-age=3600; path=/; SameSite=Strict`;
+        document.getElementById("faq-banner").innerHTML = `${new Date().toLocaleString()} - Cookie updated`;
     });
 
     function filter() {

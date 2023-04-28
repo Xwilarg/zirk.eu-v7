@@ -12,3 +12,7 @@ div.question > a {
     text-decoration: none;
     color: #e8e6e3;
 }
+
+#faq-banner {
+    color: green;
+}
