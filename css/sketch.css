@@ -23,3 +23,7 @@
     padding: 10px;
     display: none;
 }
+
+#unity-loading {
+    font-size: 1.2em;
+}

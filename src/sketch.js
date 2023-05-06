@@ -60,6 +60,7 @@ function load_sketch() {
         createUnityInstance(canvas, config, (_) => {
         }).then((unityInstance) => {
             sketchInstance = unityInstance;
+            document.getElementById("unity-loading").hidden = true;
         }).catch((message) => {
             alert(message);
         });
