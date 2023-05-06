@@ -10,8 +10,15 @@ table {
 }
 
 #about-music button {
-    width: 300px;
+    width: 200px;
+    height: 60px;
     font-size: 17px;
+}
+
+#about-music button p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #about-games > div {

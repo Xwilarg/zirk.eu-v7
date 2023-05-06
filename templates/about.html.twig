@@ -45,9 +45,14 @@
 <div id="about-music" class="flex">
     {% for music in about.music %}
         <div>
-            <a href="{{ music.link }}" target="_blank">{{ music.en }}</a><br/>
+            <a href="{{ music.link }}" target="_blank">{{ music.en ?? music.name }}</a>
+            <br/>
             {% for youtube in music.youtube %}
-            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">{{ youtube.en }}</button><br/>
+            <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">
+                <p>
+                    {{ youtube.en ?? youtube.name }}
+                </p>
+            </button><br/>
             {% endfor %}
         </div>
     {% endfor %}
