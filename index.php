@@ -75,6 +75,7 @@ foreach ($data["jams"] as $jam) {
         "gif" => "data/img/gamejam/" . $jam["name"] . ".gif",
         "event" => $jam["event"],
         "shortEvent" => $jam["shortEvent"],
+        "eventCategory" => $jam["eventCategory"],
         "date" => $jam["date"],
         "duration" => $jam["duration"],
         "location" => $location,
