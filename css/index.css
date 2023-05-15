@@ -107,14 +107,10 @@ a.faq-tab {
     height: 7.5em;
 }
 
-.see-more.tertiary {
-    width: 32.5em;
-    height: 7.5em;
-}
-
-.see-more.quaternary {
-    width: 7.5em;
-    height: 7.5em;
+@media (max-width: 65em) {
+    .see-more {
+        width: 100%;
+    }
 }
 
 [hidden]
