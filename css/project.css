@@ -4,10 +4,14 @@
     margin-right: .5em;
 }
 
-.project img {
+.project img, .project iframe {
     width: 100%;
     height: calc(500px / 1.4);
     object-fit: contain;
+}
+
+.project iframe {
+    border: none;
 }
 
 @media (max-width: 1000px) {

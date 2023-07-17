@@ -1,6 +1,10 @@
 <div class="project">
     <h2>{{ project.name ?? "&nbsp;" }}</h2>
+    {% if project.name == "zirk.eu" %}
+    <iframe src="zirk.eu"></iframe>
+    {% else %}
     <img data-src="{{ project.image ?? "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" }}" class="lazy"></img>
+    {% endif %}
     <br/>
     <p>
         {{ project.description }}
