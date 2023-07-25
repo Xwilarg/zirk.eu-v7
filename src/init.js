@@ -176,12 +176,18 @@ window.onload = function () {
                 game.hidden = true;
                 continue;
             }
+            let ranked = document.getElementById("filter-ranked");
+            console.log(game.dataset.score);
+            if (ranked.checked && game.dataset.score === "1") {
+                game.hidden = true;
+                continue;
+            }
             game.hidden = false;
         }
     }
 
     let filters = [
-        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-language", "filter-people", "filter-alone"
+        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-language", "filter-people", "filter-alone", "filter-ranked"
     ]
 
     for (let f of filters) {
@@ -189,4 +195,20 @@ window.onload = function () {
             filter();
         });
     }
+
+    document.getElementById("jam-sort-date").addEventListener('change', () => {
+        let i = 0;
+        for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return a.dataset.date - b.dataset.date; })) {
+            elem.style.order = i;
+            i++;
+        }
+    });
+
+    document.getElementById("jam-sort-score").addEventListener('change', () => {
+        let i = 0;
+        for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return a.dataset.score - b.dataset.score; })) {
+            elem.style.order = i;
+            i++;
+        }
+    });
 };
