@@ -132,6 +132,11 @@
                 {% endfor %}
             </select>
             <input type="checkbox" id="filter-alone"> Done Alone
+            <input type="checkbox" id="filter-ranked"> Is Ranked
+            <br>
+            Order:
+            <input type="radio" name="jam-sort" id="jam-sort-date" checked> Date
+            <input type="radio" name="jam-sort" id="jam-sort-score"> Score
         </div>
         <div class="flex full-list">
             {% for jam in jams.data %}
