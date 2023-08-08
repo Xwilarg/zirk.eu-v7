@@ -115,8 +115,9 @@ window.onload = function () {
         document.getElementById("faq-banner").innerHTML = `${new Date().toLocaleString()} - Cookie updated`;
     });
 
+    const jamsList = document.querySelectorAll(".full-list .gamejam");
     function filter() {
-        for (let game of document.querySelectorAll(".full-list .gamejam")) {
+        for (let game of jamsList) {
             let l = document.getElementById("filter-location");
             if (l.value !== "" && l.value !== game.dataset.location) {
                 game.hidden = true;
@@ -211,4 +212,90 @@ window.onload = function () {
             i++;
         }
     });
+
+    {
+        const ctx = document.getElementById("jam-stat-count");
+        let labels = [];
+        let counts = [];
+
+        for (let i = 2016; i <= new Date().getFullYear(); i++) {
+            labels.push(i);
+            counts.push([...jamsList].filter(x => x.dataset.year === i.toString()).length);
+        }
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: '# of Jams',
+              data: counts,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Number of jams per years',
+                }
+              },
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    }
+    {
+        const ctx = document.getElementById("jam-stat-duration");
+        let labels = [];
+        let averages = [];
+        let medians = [];
+
+        for (let i = 2016; i <= new Date().getFullYear(); i++) {
+            labels.push(i);
+            const elems = [...jamsList].filter(x => x.dataset.year === i.toString()).map(x => Number.parseInt(x.dataset.duration));
+            averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
+
+            if (elems.length > 0) {
+                const index = Number.parseInt(elems.length / 2);
+                if (elems.length % 2 === 0) {
+                    medians.push((elems[index - 1] + elems[index]) / 2);
+                } else {
+                    medians.push(elems[index]);
+                }
+            }
+        }
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Average',
+              data: averages,
+              borderWidth: 1
+            }, {
+                label: 'Medians',
+                data: medians,
+                borderWidth: 1
+              }]
+          },
+          options: {
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Jam durations (hours) per years',
+                }
+              },
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    }
 };
