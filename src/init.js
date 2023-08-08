@@ -257,15 +257,18 @@ window.onload = function () {
         for (let i = 2016; i <= new Date().getFullYear(); i++) {
             labels.push(i);
             const elems = [...jamsList].filter(x => x.dataset.year === i.toString()).map(x => Number.parseInt(x.dataset.duration));
-            averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
 
             if (elems.length > 0) {
+                averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
                 const index = Number.parseInt(elems.length / 2);
                 if (elems.length % 2 === 0) {
                     medians.push((elems[index - 1] + elems[index]) / 2);
                 } else {
                     medians.push(elems[index]);
                 }
+            } else {
+                averages.push(null);
+                medians.push(null);
             }
         }
 
@@ -294,6 +297,61 @@ window.onload = function () {
               y: {
                 beginAtZero: true
               }
+            }
+          }
+        });
+    }
+    {
+        const ctx = document.getElementById("jam-stat-score");
+        let labels = [];
+        let averages = [];
+        let medians = [];
+
+        for (let i = 2016; i <= new Date().getFullYear(); i++) {
+            labels.push(i);
+            const elems = [...jamsList].filter(x => x.dataset.year === i.toString() && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
+
+            if (elems.length > 0) {
+                averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
+                const index = Number.parseInt(elems.length / 2);
+                if (elems.length % 2 === 0) {
+                    medians.push((elems[index - 1] + elems[index]) / 2);
+                } else {
+                    medians.push(elems[index]);
+                }
+            } else {
+                averages.push(null);
+                medians.push(null);
+            }
+        }
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Average',
+              data: averages,
+              borderWidth: 1
+            }, {
+                label: 'Medians',
+                data: medians,
+                borderWidth: 1
+              }]
+          },
+          options: {
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Jam scores (rank percentile) per years',
+                }
+              },
+            scales: {
+              y: {
+                suggestedMin: 0,
+                suggestedMax: 100,
+                reverse: true
+              },
             }
           }
         });
