@@ -287,6 +287,7 @@ window.onload = function () {
               }]
           },
           options: {
+            spanGaps: true,
             plugins: {
                 title: {
                   display: true,
@@ -340,6 +341,7 @@ window.onload = function () {
               }]
           },
           options: {
+            spanGaps: true,
             plugins: {
                 title: {
                   display: true,
