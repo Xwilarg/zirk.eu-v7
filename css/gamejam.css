@@ -47,3 +47,7 @@
 .filter {
     margin-bottom: 2em;
 }
+
+#gamejam li {
+    text-align: left;
+}
