@@ -358,4 +358,33 @@ window.onload = function () {
           }
         });
     }
+    {
+        const ctx = document.getElementById("jam-stat-engines");
+        let labels = [];
+        let values = [];
+
+        for (const elem of [...new Set([...jamsList].map(x => x.dataset.engine))]) {
+            labels.push(elem);
+            values.push([...jamsList].filter(x => x.dataset.engine === elem).length);
+        }
+
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Engines',
+              data: values
+            }]
+          },
+          options: {
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Engines used',
+                }
+              }
+          }
+        });
+    }
 };
