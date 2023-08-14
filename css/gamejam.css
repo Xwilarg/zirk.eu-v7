@@ -47,3 +47,19 @@
 .filter {
     margin-bottom: 2em;
 }
+
+#gamejam li {
+    text-align: left;
+}
+
+#gamejam-stats > div {
+    width: 500px;
+    height: calc(500px / 1.75);
+}
+
+@media (max-width: 500px) {
+    #gamejam-stats > div {
+        width: 90vw;
+        height: calc(90vw/1.75);
+    }
+}

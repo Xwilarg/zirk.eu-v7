@@ -53,18 +53,25 @@
                     <li>Rank: If there is a voting phase at the end of the game, final score out of how many games were ranked, the total amount of game published may be higher than that</li>
                     <li>Tier: Based on the rank, calculated the following way: Overall rank / Number of entries rated * 100</li>
                 </ul>
-                <hr/>
-                Filters:
-                <ul>
-                    <li>Location: City the jam was organized in if it was actually did in presential</li>
-                    <li>Game Engine: Engine the jam was made with</li>
-                    <li>Event: Name of the event itself</li>
-                    <li>Language: Language available in-game</li>
-                    <li>Participants: People that participated to the jam, this usually mean the base team referenced in the credits which may not count people that just came by in the middle of it to fix something or who weren't referrenced for some reason, for privacy reason these are censorred for now</li>
-                    <li>Duration: Duration of the jam, explained above</li>
-                    <li>Entries: Total number of entry for an event</li>
-                    <li>Year: Year at which the jam was done</li>
-                </ul>
+            </span>
+            <a class="main-link not-link" href="#gamejam-stats" data-category="jaminfo-tab" data-target="gamejam-stats" data-dependency="gamejam"><h3>(+) Stats</h3></a>
+            <span class="jaminfo-tab flex" id="gamejam-stats" hidden>
+                <div>
+                    <canvas id="jam-stat-count">
+                    </canvas>
+                </div>
+                <div>
+                    <canvas id="jam-stat-duration">
+                    </canvas>
+                </div>
+                <div>
+                    <canvas id="jam-stat-score">
+                    </canvas>
+                </div>
+                <div>
+                    <canvas id="jam-stat-engines">
+                    </canvas>
+                </div>
             </span>
         </div>
         <h3>Best Scores (≥24h)</h3>
