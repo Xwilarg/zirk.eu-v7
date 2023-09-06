@@ -391,11 +391,11 @@ window.onload = function () {
             labels: labels,
             datasets: [{
               label: 'Average',
-              data: averages.map(x => [100, 100 - x]),
+              data: averages.map(x => x == null ? null : [100, x]),
               borderWidth: 1
             }, {
                 label: 'Medians',
-                data: medians.map(x => [100, 100 - x]),
+                data: medians.map(x => x == null ? null : [100, x]),
                 borderWidth: 1
               }]
           },
