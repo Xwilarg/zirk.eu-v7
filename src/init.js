@@ -359,6 +359,65 @@ window.onload = function () {
         });
     }
     {
+        const durations = [1, 24, 48, 72, 168, 10000];
+        const ctx = document.getElementById("jam-stat-score-by-duration");
+        let labels = [];
+        let averages = [];
+        let medians = [];
+
+        for (let i in durations) {
+            const d = durations[i];
+            const last = i == 0 ? 0 : durations[i - 1];
+            labels.push(`≤${d}`);
+            const elems = [...jamsList].filter(x => x.dataset.duration > last && x.dataset.duration < d && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
+
+            if (elems.length > 0) {
+                averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
+                const index = Number.parseInt(elems.length / 2);
+                if (elems.length % 2 === 0) {
+                    medians.push((elems[index - 1] + elems[index]) / 2);
+                } else {
+                    medians.push(elems[index]);
+                }
+            } else {
+                averages.push(null);
+                medians.push(null);
+            }
+        }
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Average',
+              data: averages.map(x => [100, 100 - x]),
+              borderWidth: 1
+            }, {
+                label: 'Medians',
+                data: medians.map(x => [100, 100 - x]),
+                borderWidth: 1
+              }]
+          },
+          options: {
+            spanGaps: true,
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Jam scores (rank percentile) per jam length',
+                }
+              },
+            scales: {
+              y: {
+                suggestedMin: 0,
+                suggestedMax: 100,
+                reverse: true
+              },
+            }
+          }
+        });
+    }
+    {
         const ctx = document.getElementById("jam-stat-engines");
         let labels = [];
         let values = [];
