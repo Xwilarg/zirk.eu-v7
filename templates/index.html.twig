@@ -115,7 +115,9 @@
             <select id="filter-people">
                 <option value="">Participants</option>
                 {% for key, value in jams.people %}
-                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                    {% if not (key matches '/[A-F0-9]{32}/') %} {# This can probably be done better from index.php #}
+                        <option value="{{ key }}">{{ key }} ({{ value }})</option>
+                    {% endif %}
                 {% endfor %}
             </select>
             <select id="filter-duration">
