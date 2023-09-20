@@ -178,7 +178,6 @@ window.onload = function () {
                 continue;
             }
             let ranked = document.getElementById("filter-ranked");
-            console.log(game.dataset.score);
             if (ranked.checked && game.dataset.score === "1") {
                 game.hidden = true;
                 continue;
@@ -310,7 +309,7 @@ window.onload = function () {
 
         for (let i = 2016; i <= new Date().getFullYear(); i++) {
             labels.push(i);
-            const elems = [...jamsList].filter(x => x.dataset.year === i.toString() && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
+            const elems = [...jamsList].filter(x => x.dataset.year === i.toString() && x.dataset.score !== "1" && x.dataset.entries >= 10).map(x => Number.parseFloat(x.dataset.score) * 100);
 
             if (elems.length > 0) {
                 averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
@@ -345,7 +344,7 @@ window.onload = function () {
             plugins: {
                 title: {
                   display: true,
-                  text: 'Jam scores (rank percentile) per years',
+                  text: 'Jam scores (rank percentile) per years (≥10 entries)',
                 }
               },
             scales: {
@@ -369,8 +368,8 @@ window.onload = function () {
             const d = durations[i];
             const last = i == 0 ? 0 : durations[i - 1];
             labels.push(`≤${d}`);
-            const elems = [...jamsList].filter(x => x.dataset.duration > last && x.dataset.duration < d && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
-
+            const elems = [...jamsList].filter(x => x.dataset.duration > last && x.dataset.duration <= d && x.dataset.score !== "1" && x.dataset.entries >= 10).map(x => Number.parseFloat(x.dataset.score) * 100);
+0
             if (elems.length > 0) {
                 averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
                 const index = Number.parseInt(elems.length / 2);
@@ -404,7 +403,7 @@ window.onload = function () {
             plugins: {
                 title: {
                   display: true,
-                  text: 'Jam scores (rank percentile) per jam length',
+                  text: 'Jam scores (rank percentile) per jam length (≥10 entries)',
                 }
               },
             scales: {
