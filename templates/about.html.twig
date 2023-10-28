@@ -43,13 +43,9 @@
 <h3>Music</h3>
 <iframe id="music-yt-player" class="yt-player" src="" frameborder="0" allow="" hidden></iframe>
 <div id="about-music" class="flex">
-    {% for music in about.music %}
+    {% for music in about.music.main %}
         <div>
-            {% if music.link is null %}
-            {{ music.en ?? music.name }}
-            {% else %}
             <a href="{{ music.link }}" target="_blank">{{ music.en ?? music.name }}</a>
-            {% endif %}
             <br/>
             {% for youtube in music.youtube %}
             <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">
@@ -60,6 +56,16 @@
             {% endfor %}
         </div>
     {% endfor %}
+    <div>
+        Others<br/>
+        {% for music in about.music.others | shuffle[:3] %}
+                <button class="youtube-show button small" data-id="{{ music.id }}" data-target="music">
+                    <p>
+                        {{ music.en ?? music.name }}
+                    </p>
+                </button><br/>
+        {% endfor %}
+    </div>
 </div>
 <h3>Readable Stuffs</h3>
 <div>

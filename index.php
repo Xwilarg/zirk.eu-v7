@@ -4,9 +4,16 @@ require_once "vendor/autoload.php";
 
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
+use Twig\TwigFilter;
 
 $loader = new FilesystemLoader(["templates"]);
 $twig = new Environment($loader);
+
+$function = new TwigFilter('shuffle', function ($array) {
+    shuffle($array);
+    return $array;
+});
+$twig->addFilter($function);
 
 # Gamejams
 $jamData = array();
