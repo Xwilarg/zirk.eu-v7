@@ -45,11 +45,17 @@
 <div id="about-music" class="flex">
     {% for music in about.music.main %}
         <div>
-            <a href="{{ music.link }}" target="_blank">{{ music.en ?? music.name }}</a>
+            {% if music.link is null %}
+                {{ music.en ?? music.name }}
+            {% else %}
+                <a href="{{ music.link }}" target="_blank">{{ music.en ?? music.name }}</a>
+            {% endif %}
             <br/>
             {% for youtube in music.youtube %}
             <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">
-                <p>
+                <p{% if youtube.en is null and youtube.name | length > 25 %}
+                    class="long-text"
+                {% endif %}>
                     {{ youtube.en ?? youtube.name }}
                 </p>
             </button><br/>
