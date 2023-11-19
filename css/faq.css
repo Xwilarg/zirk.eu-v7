@@ -16,3 +16,9 @@ div.question > a {
 #faq-banner {
     color: green;
 }
+
+@media (max-width: 581px) {
+    .question img {
+        width: 100%;
+    }
+}
