@@ -4,7 +4,11 @@
             {{jam.event}}{% if jam.eventCategory %} ({{ jam.eventCategory }}){% endif %}<br/>{% if jam.theme %}{{ jam.theme }} - {% endif %}{{jam.duration|round(0, 'floor')}} hour{% if jam.duration > 1 %}s{% endif %} - {{jam.date}}
         </p>
     </div>
+    {% if jam.image is null %}
+    <img data-src="" src="img/gamejam/ComingSoon.png"></img>
+    {% else %}
     <img data-src="{{ jam.image }}" class="lazy"></img>
+    {% endif %}
     <br/>
     <span class="jam-info">
         <span class="jam-buttons">
