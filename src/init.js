@@ -1,3 +1,6 @@
+// If you're reading this comment it mean you're looking at my code
+// ... Please don't, I was lazy and it's atrocious
+
 window.onload = function () {
     let linkReverse = {};
 
@@ -252,6 +255,41 @@ window.onload = function () {
         });
     }
     {
+        const ctx = document.getElementById("jam-stat-hours-count");
+        let labels = [];
+        let counts = [];
+
+        for (let i = 2016; i <= new Date().getFullYear(); i++) {
+            labels.push(i);
+            counts.push([...jamsList].filter(x => x.dataset.year === i.toString()).reduce((partialSum, x) => partialSum + Number.parseInt(x.dataset.duration), 0));
+        }
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: '# of Jams',
+              data: counts,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Time spent of jams per years (hours)',
+                }
+              },
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    }
+    {
         const ctx = document.getElementById("jam-stat-duration");
         let labels = [];
         let averages = [];
@@ -349,6 +387,65 @@ window.onload = function () {
                 title: {
                   display: true,
                   text: 'Jam scores (rank percentile) per years (≥10 entries)',
+                }
+              },
+            scales: {
+              y: {
+                suggestedMin: 0,
+                suggestedMax: 100,
+                reverse: true
+              },
+            }
+          }
+        });
+    }
+    {
+        const entries = [10, 100, 1000, 5000, 100000];
+        const ctx = document.getElementById("jam-stat-score-by-entry-count");
+        let labels = [];
+        let averages = [];
+        let medians = [];
+
+        for (let i in entries) {
+            const d = entries[i];
+            const last = i == 0 ? 0 : entries[i - 1];
+            labels.push(`≤${d}`);
+            const elems = [...jamsList].filter(x => x.dataset.entries > last && x.dataset.entries <= d && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
+0
+            if (elems.length > 0) {
+                averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
+                const index = Number.parseInt(elems.length / 2);
+                if (elems.length % 2 === 0) {
+                    medians.push((elems[index - 1] + elems[index]) / 2);
+                } else {
+                    medians.push(elems[index]);
+                }
+            } else {
+                averages.push(null);
+                medians.push(null);
+            }
+        }
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Average',
+              data: averages.map(x => x == null ? null : [100, x]),
+              borderWidth: 1
+            }, {
+                label: 'Medians',
+                data: medians.map(x => x == null ? null : [100, x]),
+                borderWidth: 1
+              }]
+          },
+          options: {
+            spanGaps: true,
+            plugins: {
+                title: {
+                  display: true,
+                  text: 'Jam scores (rank percentile) per jam entry count',
                 }
               },
             scales: {
