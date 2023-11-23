@@ -18,6 +18,10 @@ function setup_sketch()
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'Fishing');
         explanation_show_sketch("sketch-fishing");
     });
+    document.getElementById("sketch-visual-novel").addEventListener("click", _ => {
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'VN');
+        explanation_show_sketch("sketch-visual-novel");
+    });
 }
 
 function load_sketch() {
@@ -47,11 +51,11 @@ function load_sketch() {
     }
     
     var buildUrl = "sketch";
-    var loaderUrl = buildUrl + "/WebGLBuild.loader.js";
+    var loaderUrl = buildUrl + "/Sketch.loader.js";
     var config = {
-        dataUrl: buildUrl + "/WebGLBuild.data.unityweb",
-        frameworkUrl: buildUrl + "/WebGLBuild.framework.js.unityweb",
-        codeUrl: buildUrl + "/WebGLBuild.wasm.unityweb",
+        dataUrl: buildUrl + "/Sketch.data.unityweb",
+        frameworkUrl: buildUrl + "/Sketch.framework.js.unityweb",
+        codeUrl: buildUrl + "/Sketch.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Sketch",
