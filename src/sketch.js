@@ -22,6 +22,10 @@ function setup_sketch()
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'VN');
         explanation_show_sketch("sketch-visual-novel");
     });
+    document.getElementById("sketch-trpg").addEventListener("click", _ => {
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'TRPG');
+        explanation_show_sketch("sketch-trpg");
+    });
 }
 
 function load_sketch() {
