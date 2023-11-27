@@ -40,13 +40,13 @@ window.onload = function () {
     for (let elem of document.getElementsByClassName("gamejam")) {
         const img = elem.querySelector("img");
         elem.addEventListener("mouseover", e => { // Display the underlying GIF
-            if (img.dataset.src !== "") {
+            if (elem.dataset.missinggif !== "1") {
                 img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="; // Display an empty image so we don't have the "missing image" thing
                 img.style.backgroundImage = `url(${img.dataset.src.substring(0, img.dataset.src.length - 4)}.gif)`;
             }
         });
         elem.addEventListener("mouseout", _ => { // Display the image
-            if (img.dataset.src !== "") {
+            if (elem.dataset.missinggif !== "1") {
                 img.src = img.dataset.src;
                 img.style.backgroundImage = "";
             }
@@ -411,7 +411,7 @@ window.onload = function () {
             const last = i == 0 ? 0 : entries[i - 1];
             labels.push(`≤${d}`);
             const elems = [...jamsList].filter(x => x.dataset.entries > last && x.dataset.entries <= d && x.dataset.score !== "1").map(x => Number.parseFloat(x.dataset.score) * 100);
-0
+
             if (elems.length > 0) {
                 averages.push(elems.reduce((partialSum, a) => partialSum + a, 0) / elems.length);
                 const index = Number.parseInt(elems.length / 2);
