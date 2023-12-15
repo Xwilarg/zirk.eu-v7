@@ -184,7 +184,7 @@
                     <th>Description</th>
                     <th>Date</th>
                     <th>Languages</th>
-                    <th>Click</th>
+                    <th>More</th>
                 </thead>
                 <tbody>
                     {% for project in projects %}
@@ -194,7 +194,14 @@
                         <td>{{ project.description }}</td>
                         <td>{{ project.start }} - {{ project.end }}</td>
                         <td>{{ project.languages | join(" ") }}</td>
-                        <td>{% if project.image is not null %}<button class="project-image-preview small button" data-name="{{ project.name }}" data-img="{{ project.image }}"><i class="fa-solid fa-computer-mouse"></i></button>{% endif %}</td>
+                        <td>
+                        {% if project.image is not null %}
+                        <button class="project-image-preview small button" data-name="{{ project.name }}" data-img="{{ project.image }}"><i class="fa-solid fa-image"></i></button>
+                        {% endif %}
+                        {% if project.links | filter((x) => x.name == "Source Code") | length == 1 %}
+                        <a class="button" target="_blank" href="{{ project.links | filter((x) => x.name == "Source Code") | first.content }}"><i class="fa-brands fa-github"></i></a>
+                        {% endif %}
+                    </td>
                     </tr>
                     {% endfor %}
                 </tbody>

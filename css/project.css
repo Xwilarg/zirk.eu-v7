@@ -71,3 +71,9 @@
 #project-normal-preview-image {
     max-width: 60vw;
 }
+
+tr .button, tr button {
+    font-size: 1.5em;
+    margin: 5px;
+    padding: 2px 5px;
+}
