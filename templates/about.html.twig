@@ -53,7 +53,7 @@
             <br/>
             {% for youtube in music.youtube %}
             <button class="youtube-show button small" data-id="{{ youtube.id }}" data-target="music">
-                <p{% if youtube.en is null and youtube.name | length > 25 %}
+                <p{% if youtube.en is null and youtube.name | length > 25 or youtube.en | length > 50 %}
                     class="long-text"
                 {% endif %}>
                     {{ youtube.en ?? youtube.name }}
