@@ -203,21 +203,30 @@ window.onload = function () {
         });
     }
 
-    document.getElementById("jam-sort-date").addEventListener('change', () => {
-        let i = 0;
-        for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return a.dataset.date - b.dataset.date; })) {
+    function sortDate() {
+      let i = 0;
+        for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return Date.parse(b.dataset.date) - Date.parse(a.dataset.date); })) {
             elem.style.order = i;
             i++;
         }
+    }
+
+    function sortScore() {
+      let i = 0;
+      for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return a.dataset.score - b.dataset.score; })) {
+          elem.style.order = i;
+          i++;
+      }
+    }
+
+    document.getElementById("jam-sort-date").addEventListener('change', () => {
+        sortDate();
     });
 
     document.getElementById("jam-sort-score").addEventListener('change', () => {
-        let i = 0;
-        for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return a.dataset.score - b.dataset.score; })) {
-            elem.style.order = i;
-            i++;
-        }
+      sortScore();
     });
+    sortDate();
 
     {
         const ctx = document.getElementById("jam-stat-count");
