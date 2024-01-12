@@ -26,6 +26,10 @@ function setup_sketch()
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'TRPG');
         explanation_show_sketch("sketch-trpg");
     });
+    document.getElementById("sketch-credits").addEventListener("click", _ => {
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'Credits');
+        explanation_show_sketch("sketch-credits");
+    });
 }
 
 function load_sketch() {
