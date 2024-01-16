@@ -10,6 +10,10 @@ function explanation_show_sketch(id)
 
 function setup_sketch()
 {
+    document.getElementById("sketch-home").addEventListener("click", _ => {
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'Main');
+        explanation_show_sketch("sketch-home");
+    });
     document.getElementById("sketch-map-gen").addEventListener("click", _ => {
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'MapGeneration');
         explanation_show_sketch("sketch-map-gen");
