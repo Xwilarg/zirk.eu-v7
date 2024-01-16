@@ -30,6 +30,10 @@ function setup_sketch()
         sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'Credits');
         explanation_show_sketch("sketch-credits");
     });
+    document.getElementById("sketch-achievements").addEventListener("click", _ => {
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', 'Achievements');
+        explanation_show_sketch("sketch-achievements");
+    });
 }
 
 function load_sketch() {
