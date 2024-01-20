@@ -81,7 +81,7 @@ foreach ($data["jams"] as $jam) {
     array_push($jamData, [
         "name" => $jam["fullName"],
         "image" => file_exists($imagePath) ? $imagePath : null,
-        "gif" => file_exists($gifPath) ? $gifPath : null,
+        "gif" => file_exists($gifPath) && !$jam["nsfw"] ? $gifPath : null,
         "event" => $jam["nsfw"] ? null : $jam["event"],
         "shortEvent" => $jam["nsfw"] ? null : $jam["shortEvent"],
         "eventCategory" => $jam["eventCategory"],
@@ -101,7 +101,8 @@ foreach ($data["jams"] as $jam) {
         "language" => $jam["language"],
         "entriesTotal" => ($jam["rating"] === null || $jam["rating"]["entries"] === null) ? -1 : $jam["rating"]["entries"],
         "score" => $overall === 0 || $entries == 0 ? 1
-            : ($overall / $entries)
+            : ($overall / $entries),
+        "imagePosOverrides" => isset($jam["imagePosOverrides"]) ? $jam["imagePosOverrides"] : null
     ]);
 }
 arsort($locations);
