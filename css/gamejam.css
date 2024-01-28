@@ -13,12 +13,16 @@
     object-fit: cover;
 }
 
-.gamejam .pos-middle {
+.gamejam .gif-pos-middle {
     background-position: center;
 }
 
-.gamejam .pos-right {
+.gamejam .gif-pos-right {
     background-position: right;
+}
+
+.gamejam .image-pos-right {
+    object-position: right;
 }
 
 @media (max-width: 500px) {

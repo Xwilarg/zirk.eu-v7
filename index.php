@@ -102,6 +102,7 @@ foreach ($data["jams"] as $jam) {
         "entriesTotal" => ($jam["rating"] === null || $jam["rating"]["entries"] === null) ? -1 : $jam["rating"]["entries"],
         "score" => $overall === 0 || $entries == 0 ? 1
             : ($overall / $entries),
+        "gifPosOverrides" => isset($jam["gifPosOverrides"]) ? $jam["gifPosOverrides"] : null,
         "imagePosOverrides" => isset($jam["imagePosOverrides"]) ? $jam["imagePosOverrides"] : null
     ]);
 }
