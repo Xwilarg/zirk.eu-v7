@@ -219,12 +219,24 @@ window.onload = function () {
       }
     }
 
+    function sortDuration() {
+      let i = 0;
+      for (let elem of [...document.querySelectorAll(".full-list .gamejam")].sort((a, b) => { return b.dataset.duration - a.dataset.duration; })) {
+          elem.style.order = i;
+          i++;
+      }
+    }
+
     document.getElementById("jam-sort-date").addEventListener('change', () => {
         sortDate();
     });
 
     document.getElementById("jam-sort-score").addEventListener('change', () => {
       sortScore();
+    });
+
+    document.getElementById("jam-sort-duration").addEventListener('change', () => {
+      sortDuration();
     });
     sortDate();
 
