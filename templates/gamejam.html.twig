@@ -7,7 +7,7 @@
     {% if jam.image is null %}
     <img data-src="" src="img/gamejam/ComingSoon.png"></img>
     {% else %}
-    <img data-src="{{ jam.image }}" class="lazy {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% endif %}"></img>
+    <img data-src="{{ jam.image }}" class="lazy {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% endif %}"></img>
     {% endif %}
     <br/>
     <span class="jam-info">

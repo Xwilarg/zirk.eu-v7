@@ -25,6 +25,10 @@
     object-position: right;
 }
 
+.gamejam .image-pos-down {
+    object-position: bottom;
+}
+
 @media (max-width: 500px) {
     .gamejam img {
         width: 90vw;
