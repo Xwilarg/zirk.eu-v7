@@ -29,6 +29,10 @@
     object-position: bottom;
 }
 
+.gamejam .image-pos-up {
+    object-position: top;
+}
+
 @media (max-width: 500px) {
     .gamejam img {
         width: 90vw;
