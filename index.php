@@ -103,7 +103,8 @@ foreach ($data["jams"] as $jam) {
         "score" => $overall === 0 || $entries == 0 ? 1
             : ($overall / $entries),
         "gifPosOverrides" => isset($jam["gifPosOverrides"]) ? $jam["gifPosOverrides"] : null,
-        "imagePosOverrides" => isset($jam["imagePosOverrides"]) ? $jam["imagePosOverrides"] : null
+        "imagePosOverrides" => isset($jam["imagePosOverrides"]) ? $jam["imagePosOverrides"] : null,
+        "nsfw" => $jam["nsfw"]
     ]);
 }
 arsort($locations);

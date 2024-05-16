@@ -82,3 +82,7 @@
         height: calc(90vw/1.75);
     }
 }
+
+.blur {
+    filter: blur(25px);
+}
