@@ -15,6 +15,8 @@ $function = new TwigFilter('shuffle', function ($array) {
 });
 $twig->addFilter($function);
 
+$nsfw = isset($_GET["s"]) && $_GET["s"] === "0";
+
 # Gamejams
 $jamData = array();
 $locations = array();
@@ -81,9 +83,9 @@ foreach ($data["jams"] as $jam) {
     array_push($jamData, [
         "name" => $jam["fullName"],
         "image" => file_exists($imagePath) ? $imagePath : null,
-        "gif" => file_exists($gifPath) && !$jam["nsfw"] ? $gifPath : null,
-        "event" => $jam["nsfw"] ? null : $jam["event"],
-        "shortEvent" => $jam["nsfw"] ? null : $jam["shortEvent"],
+        "gif" => file_exists($gifPath) && ($nsfw || !$jam["nsfw"]) ? $gifPath : null,
+        "event" => (!$nsfw && $jam["nsfw"]) ? null : $jam["event"],
+        "shortEvent" => (!$nsfw && $jam["nsfw"]) ? null : $jam["shortEvent"],
         "eventCategory" => $jam["eventCategory"],
         "date" => $jam["date"],
         "duration" => $jam["duration"],
@@ -93,9 +95,9 @@ foreach ($data["jams"] as $jam) {
         "overall" => $overall,
         "team" => $currTeam,
         "entries" => $entries,
-        "website" => $jam["nsfw"] ? null : $jam["website"],
-        "source" => $jam["nsfw"] ? null : $jam["github"],
-        "webgl" => $jam["nsfw"] || count($jam["webgl"]) == 0 ? null : $jam["webgl"][0],
+        "website" => (!$nsfw && $jam["nsfw"]) ? null : $jam["website"],
+        "source" => (!$nsfw && $jam["nsfw"])? null : $jam["github"],
+        "webgl" => (!$nsfw && $jam["nsfw"]) || count($jam["webgl"]) == 0 ? null : $jam["webgl"][0],
         "gameplay" => $jam["gameplay"],
         "stream" => $jam["stream"],
         "language" => $jam["language"],
@@ -122,7 +124,7 @@ $data = json_decode(file_get_contents("data/json/projects.json"), true);
 usort($data, "projectSort");
 foreach ($data as $project) {
     array_push($projectsData, [
-        "name" => $project["nsfw"] ? null : $project["name"],
+        "name" => (!$nsfw && $project["nsfw"]) ? null : $project["name"],
         "type" => $project["type"],
         "description" => $project["description"],
         "languages" => $project["languages"],
@@ -130,7 +132,7 @@ foreach ($data as $project) {
         "start" => $project["dates"]["start"],
         "end" => $project["dates"]["end"],
         "highlight" => $project["highlight"],
-        "links" => $project["nsfw"] ? array() : $project["links"]
+        "links" => (!$nsfw && $project["nsfw"]) ? array() : $project["links"]
     ]);
 }
 
@@ -145,5 +147,6 @@ echo $twig->render("index.html.twig", [
         "people" => $people
     ],
     "projects" => $projectsData,
-    "about" => json_decode(file_get_contents("data/json/about.json"), true)
+    "about" => json_decode(file_get_contents("data/json/about.json"), true),
+    "nsfw" => $nsfw
 ]);

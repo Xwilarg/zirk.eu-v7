@@ -28,6 +28,18 @@
     </span>
 </div>
 <div class="question">
+    <a class="main-link not-link" href="#faq-nsfw" data-category="faq-tab" data-target="faq-nsfw" data-dependency="faq"><h3>(+) Display sensitive content</h3></a>
+    <span class="faq-tab" id="faq-nsfw" hidden>
+        {% if nsfw %}
+            You are on the mature version of this website<br>
+            You can go back on the all-age version by clicking <a href="?=0">here</a>
+        {% else %}
+            You are on the all public version of this website<br>
+            Yyou can choose to display information about all projects including the ones targetting a mature audience by clicking <a href="?=0">here</a>
+        {% endif %}
+    </span>
+</div>
+<div class="question">
     <a class="main-link not-link" href="#faq-other" data-category="faq-tab" data-target="faq-other" data-dependency="faq"><h3>(+) Anything else?</h3></a>
     <span class="faq-tab" id="faq-other" hidden>
         <img class="lazy" width="581" data-src="img/about/potato.png"/>
