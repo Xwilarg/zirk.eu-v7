@@ -76,6 +76,10 @@
 <h3>Readable Stuffs</h3>
 <div>
     {% for novel in about.novels %}
+    {% if (novel.nsfw and nsfw) or not novel.nsfw %}
     <a class="readable not-link" href="{{ novel.link }}" target="_blank" alt="{{ novel.name }}"><img class="lazy" data-src="data/img/about/readable/{{novel.image}}"/></a>
+    {% else %}
+    <img class="lazy readable" data-src="data/img/about/readable/{{novel.image}}"/>
+    {% endif %}
     {% endfor %}
 </div>

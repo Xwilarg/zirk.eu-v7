@@ -52,7 +52,7 @@ a.logo img {
     width: 50px;
 }
 
-.readable img {
+.readable img, img.readable {
     height: 300px;
 }
 
