@@ -38,10 +38,12 @@ foreach ($data["jams"] as $jam) {
     } else {
         $engines[$jam["engine"]] = 1;
     }
-    if (isset($events[$jam["shortEvent"]])) {
-        $events[$jam["shortEvent"]]++;
-    } else {
-        $events[$jam["shortEvent"]] = 1;
+    if (!$jam["nsfw"] || ($nsfw && $jam["nsfw"])) {
+        if (isset($events[$jam["shortEvent"]])) {
+            $events[$jam["shortEvent"]]++;
+        } else {
+            $events[$jam["shortEvent"]] = 1;
+        }
     }
     foreach ($jam["language"] as $l) {
         if (isset($languages[$l])) {
@@ -84,8 +86,8 @@ foreach ($data["jams"] as $jam) {
         "name" => $jam["fullName"],
         "image" => file_exists($imagePath) ? $imagePath : null,
         "gif" => file_exists($gifPath) && ($nsfw || !$jam["nsfw"]) ? $gifPath : null,
-        "event" => (!$nsfw && $jam["nsfw"]) ? null : $jam["event"],
-        "shortEvent" => (!$nsfw && $jam["nsfw"]) ? null : $jam["shortEvent"],
+        "event" => $jam["event"],
+        "shortEvent" => $jam["shortEvent"],
         "eventCategory" => $jam["eventCategory"],
         "date" => $jam["date"],
         "duration" => $jam["duration"],
