@@ -1,9 +1,14 @@
 {
   "devDependencies": {
-    "esbuild": "^0.17.6"
+    "@types/chart.js": "^2.9.41",
+    "esbuild": "^0.21.3",
+    "typescript": "^5.4.5"
   },
   "scripts": {
-    "build": "esbuild src/tab.js --minify --outfile=js/tab.js && esbuild src/init.js --bundle --minify --outfile=js/init.js && esbuild src/sketch.js --minify --outfile=js/sketch.js",
+    "build": "esbuild src/index.ts --minify --bundle --sourcemap --outfile=js/index.js",
     "serve": "npm run build && php -S localhost:8181"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.3"
   }
 }

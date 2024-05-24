@@ -1,16 +1,16 @@
 // When we click on something, disable all elements and enable the current one
-function displayTab(tabClass, currentTabName) {
+export function displayTab(tabClass: string, currentTabName: string): void {
     let targetElement = document.getElementById(currentTabName);
 
     for (let elem of document.getElementsByClassName(tabClass)) {
-        elem.hidden = true;
+        (elem as HTMLElement).hidden = true;
     }
 
-    if (targetElement !== null)
-    {
+    if (targetElement !== null) {
         targetElement.hidden = false;
+        // Images with "lazy" class attached to them need to be loaded 
         for (let lazy of document.querySelectorAll(`#${currentTabName} .lazy`)) {
-            lazy.src = lazy.dataset.src;
+            (lazy as HTMLImageElement).src = (lazy as HTMLElement).dataset.src!;
         }
         targetElement.scrollIntoView();
     }
