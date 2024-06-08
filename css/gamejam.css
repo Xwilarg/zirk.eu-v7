@@ -85,4 +85,5 @@
 
 .blur {
     filter: blur(25px);
+    pointer-events: none;
 }

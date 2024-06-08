@@ -33,7 +33,8 @@
             <div>
                 {% for link in game.links %}
                     {% if link.type == "link" or link.type == "image" %}
-                    <a href="{{ link.content }}" target="_blank">{{ link.name }}</a><br/>
+                    <a href="{{ link.content }}" target="_blank">{{ link.name }}</a>
+                    {% if game.display != "inline" %}<br>{% endif %}
                     {% endif %}
                 {% endfor %}
             </div>
