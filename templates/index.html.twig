@@ -189,7 +189,7 @@
                 <br/>
                 <span class="jam-info">
                     <span class="jam-buttons">
-                        <a class="button green" target="_blank" href="{{ jam.link }}"><i class="fa-solid fa-play"></i>&nbsp;Play</a>
+                        <a class="button green" target="_blank" href="{{ k.link }}"><i class="fa-solid fa-play"></i>&nbsp;{% if k.price == "free" %}Free{% else %}{{k.price}}€{% endif %}</a>
                     </span>
                 </span>
             </div>
