@@ -11,22 +11,27 @@
     </div>
     <div class="container">
         <div class="flex">
-            <a class="see-more main-link not-link secondary" href="#sketch" data-category="global-tab" data-target="sketch" id="sketch-data">
+            <a class="see-more main-link not-link primary" href="#sketch" data-category="global-tab" data-target="sketch" id="sketch-data">
                 Showcase
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link not-link" href="#project" data-category="global-tab" data-target="project">
+            <a class="see-more main-link not-link {% if nsfw %}terciary{% else %}secondary{% endif %}" href="#project" data-category="global-tab" data-target="project">
                 Projects
             </a>
-            <a class="see-more main-link not-link" href="#gamejam" data-category="global-tab" data-target="gamejam">
+            {% if nsfw %}
+            <a class="see-more main-link not-link terciary" href="#katsis" data-category="global-tab" data-target="katsis">
+                Katsis
+            </a>
+            {% endif %}
+            <a class="see-more main-link not-link {% if nsfw %}terciary{% else %}secondary{% endif %}" href="#gamejam" data-category="global-tab" data-target="gamejam">
                 Game Jams
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link not-link secondary" href="#about" data-category="global-tab" data-target="about">
+            <a class="see-more main-link not-link primary" href="#about" data-category="global-tab" data-target="about">
                 About Me
             </a>
             <div class="flex-break"></div>
-            <a class="see-more main-link not-link secondary" href="#faq" data-category="global-tab" data-target="faq">
+            <a class="see-more main-link not-link primary" href="#faq" data-category="global-tab" data-target="faq">
                 FAQ
             </a>
         </div>
@@ -163,6 +168,31 @@
         <div class="flex full-list">
             {% for jam in jams.data %}
                 {% include 'gamejam.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="global-tab" id="katsis" hidden>
+        <h2>Katsis</h2>
+        <p class="explanation">
+            Katsis is a group of content creator focused on NSFW projects, the ones below are the non-gamejam projects I was lead dev in:<br>
+            More information about Katsis on their <a href="https://katsis.net" target="_blank">official website</a>
+        </p>
+        <div class="flex">
+            {% for k in katsis | reverse %}
+            <div class="gamejam">
+                <div class="jam-title">
+                    <p>
+                        {{ k.fullName }}
+                    </p>
+                </div>
+                <img data-src="/data/img/katsis/{{ k.name }}_thumbnail.png" data-hover="/data/img/katsis/{{ k.name }}_preview.png" class="lazy gif-pos-middle"></img>
+                <br/>
+                <span class="jam-info">
+                    <span class="jam-buttons">
+                        <a class="button green" target="_blank" href="{{ jam.link }}"><i class="fa-solid fa-play"></i>&nbsp;Play</a>
+                    </span>
+                </span>
+            </div>
             {% endfor %}
         </div>
     </div>

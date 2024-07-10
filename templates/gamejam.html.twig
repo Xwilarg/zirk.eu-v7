@@ -11,7 +11,7 @@
     {% if jam.image is null %}
     <img data-src="" src="img/gamejam/ComingSoon.png"></img>
     {% else %}
-    <img data-src="{{ jam.image }}" class="lazy {% if not nsfw and jam.nsfw %}blur{% endif %} {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% elseif jam.imagePosOverrides == "up" %}image-pos-up{% endif %}"></img>
+    <img data-src="{{ jam.image }}" data-hover="{{ jam.gif }}" class="lazy{% if not nsfw and jam.nsfw %} blur{% endif %} {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% elseif jam.imagePosOverrides == "up" %}image-pos-up{% endif %}"></img>
     {% endif %}
     <br/>
     <span class="jam-info">

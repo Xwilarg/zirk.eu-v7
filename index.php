@@ -27,7 +27,8 @@ $people = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 $jamParticipants = $data["people"];
 foreach ($data["jams"] as $jam) {
-    $location = trim(end(explode(",", $jam["location"])));
+    $tmp = explode(",", $jam["location"]);
+    $location = trim(end($tmp));
     if (isset($locations[$location])) {
         $locations[$location]++;
     } else {
@@ -75,7 +76,7 @@ foreach ($data["jams"] as $jam) {
     }
     $overall = 0;
     $entries = 0;
-    if ($jam["rating"] !== null && $jam["rating"]["scores"] !== null && $jam["rating"]["scores"]["Overall"]["rank"] !== null) {
+    if ($jam["rating"] !== null && $jam["rating"]["scores"] !== null && array_key_exists("Overall", $jam["rating"]["scores"]) && $jam["rating"]["scores"]["Overall"]["rank"] !== null) {
         $overall = $jam["rating"]["scores"]["Overall"]["rank"];
         $entries = $jam["rating"]["entriesRated"] === null ? $jam["rating"]["entries"] : $jam["rating"]["entriesRated"];
     }
@@ -150,5 +151,6 @@ echo $twig->render("index.html.twig", [
     ],
     "projects" => $projectsData,
     "about" => json_decode(file_get_contents("data/json/about.json"), true),
+    "katsis" => json_decode(file_get_contents("data/json/katsis.json"), true),
     "nsfw" => $nsfw
 ]);

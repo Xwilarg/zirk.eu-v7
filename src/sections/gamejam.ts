@@ -7,7 +7,7 @@ export function setupGamejams(): void {
         elem.addEventListener("mouseover", e => { // Display the underlying GIF
             if ((elem as HTMLElement).dataset.missinggif !== "1") {
                 img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="; // Display an empty image so we don't have the "missing image" thing
-                img.style.backgroundImage = `url(${img.dataset.src!.substring(0, img.dataset.src!.length - 4)}.gif)`;
+                img.style.backgroundImage = `url(${img.dataset.hover})`;
             }
         });
         elem.addEventListener("mouseout", _ => { // Display the image

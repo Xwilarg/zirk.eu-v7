@@ -94,7 +94,6 @@ a.faq-tab {
 }
 
 .see-more {
-    width: 20em;
     height: 17.5em;
     border: 1px solid #555;
     border-radius: 5px;
@@ -110,9 +109,15 @@ a.faq-tab {
     background-color: rgb(204, 204, 204, .1);
 }
 
-.see-more.secondary {
+.see-more.primary {
     width: 40.5em;
     height: 7.5em;
+}
+.see-more.secondary {
+    width: 20em;
+}
+.see-more.terciary {
+    width: 13.15em;
 }
 
 @media (max-width: 1000px) {
