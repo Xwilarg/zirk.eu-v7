@@ -1,36 +1,21 @@
 let isSketchLoaded = false;
 let sketchInstance;
 
-interface SketchButtonData {
-    id: string;
-    levelName: string;
-}
-
 function explanation_show_sketch(id: string): void {
-    console.log(document.querySelectorAll("#unity-explanations > div"));
-    document.querySelectorAll("#unity-explanations > div").forEach(e => (e as HTMLElement).hidden = true);
+    document.querySelectorAll("#unity-explanations div").forEach(e => (e as HTMLElement).hidden = true);
     document.getElementById(`${id}-expl`)!.hidden = false;
 }
 
-function setupSketchButton(data: SketchButtonData): void {
+function setupSketchButton(data: HTMLElement): void {
     document.getElementById(data.id)!.addEventListener("click", _ => {
-        sketchInstance.SendMessage('LevelLoader', 'LoadScene', data.levelName);
+        sketchInstance.SendMessage('LevelLoader', 'LoadScene', data.dataset.scene);
         explanation_show_sketch(data.id);
     });
 }
 
 export function setupSketch(): void {
-    let data: Array<SketchButtonData> = [
-        { id: "sketch-home", levelName: "Main" },
-        { id: "sketch-map-gen", levelName: "MapGeneration" },
-        { id: "sketch-fishing", levelName: "Fishing" },
-        { id: "sketch-visual-novel", levelName: "VN" },
-        { id: "sketch-trpg", levelName: "TRPG" },
-        { id: "sketch-credits", levelName: "Credits" },
-        { id: "sketch-achievements", levelName: "Achievements" }
-    ];
-    for (let e of data) {
-        setupSketchButton(e);
+    for (let b of document.querySelectorAll("#unity-buttons > button")) {
+        setupSketchButton(b as HTMLElement);
     }
 }
 

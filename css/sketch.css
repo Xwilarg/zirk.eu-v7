@@ -27,3 +27,14 @@
 #unity-loading {
     font-size: 1.2em;
 }
+
+#unity-explanations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#unity-explanations > fieldset {
+    width: 1000px;
+    height: 100px;
+}

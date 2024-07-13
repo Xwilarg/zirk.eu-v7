@@ -152,5 +152,6 @@ echo $twig->render("index.html.twig", [
     "projects" => $projectsData,
     "about" => json_decode(file_get_contents("data/json/about.json"), true),
     "katsis" => json_decode(file_get_contents("data/json/katsis.json"), true),
+    "sketch" => json_decode(file_get_contents("data/json/sketch.json"), true),
     "nsfw" => $nsfw
 ]);

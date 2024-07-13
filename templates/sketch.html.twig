@@ -11,27 +11,18 @@
   <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
   <div id="unity-warning"></div>
 </div>
-<button class="button" id="sketch-home">Home</button>
-<button class="button" id="sketch-map-gen">Map Generation</button>
-<button class="button" id="sketch-trpg">Turn-based RPG</button>
-<button class="button" id="sketch-fishing">Fishing</button>
-<button class="button" id="sketch-visual-novel">Visual Novel</button>
-<button class="button" id="sketch-credits">Credits</button>
-<button class="button" id="sketch-achievements">Achievements</button>
+<div id="unity-buttons">
+  {% for s in sketch %}
+  <button class="button" id="sketch-{{ s.id }}" data-scene="{{ s.scene }}">{{ s.name }}</button>
+  {% endfor %}
+</div>
 <div id="unity-explanations">
-  <div id="sketch-map-gen-expl" hidden>
-    Demonstration of a dungeon-like map generated procedurally, you can use drag&amp;drop to move around and click on a room to see its size
-  </div>
-  <div id="sketch-trpg-expl" hidden>
-    Demonstration of a turn-based game, you can click anywhere on the map to display the movement range or move around
-  </div>
-  <div id="sketch-fishing-expl" hidden>
-    There is an unsaid rule in game dev that say that if you didn't implement a fishing minigame before 50 you missed your life, well at least now I'm safe<br/>
-    You may need to move the mouse to catch fishes
-  </div>
-  <div id="sketch-visual-novel-expl" hidden>
-    Demonstration of a simple visual novel engine, often reused in the jams I do
-  </div>
-  <div id="sketch-credits-expl" hidden></div>
-  <div id="sketch-achievements-expl" hidden></div>
+  <fieldset>
+    <legend>Explanations</legend>
+    {% for s in sketch %}
+    <div id="sketch-{{ s.id }}-expl" hidden>
+    {{ s.explanations | join("<br>") | raw }}
+    </div>
+    {% endfor %}
+  </fieldset>
 </div>
