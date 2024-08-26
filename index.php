@@ -16,6 +16,7 @@ $function = new TwigFilter('shuffle', function ($array) {
 $twig->addFilter($function);
 
 $nsfw = isset($_GET["s"]) && $_GET["s"] === "0";
+$fullSfw = isset($_GET["s"]) && $_GET["s"] === "2";
 
 # Gamejams
 $jamData = array();
@@ -27,6 +28,8 @@ $people = array();
 $data = json_decode(file_get_contents("data/json/gamejam.json"), true);
 $jamParticipants = $data["people"];
 foreach ($data["jams"] as $jam) {
+    if ($fullSfw && $jam["nsfw"]) continue;
+
     $tmp = explode(",", $jam["location"]);
     $location = trim(end($tmp));
     if (isset($locations[$location])) {
@@ -126,6 +129,8 @@ $projectsData = array();
 $data = json_decode(file_get_contents("data/json/projects.json"), true);
 usort($data, "projectSort");
 foreach ($data as $project) {
+    if ($fullSfw && $project["nsfw"]) continue;
+
     array_push($projectsData, [
         "name" => (!$nsfw && $project["nsfw"]) ? null : $project["name"],
         "type" => $project["type"],
